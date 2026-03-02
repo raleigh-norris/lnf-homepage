@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Live Near Friends helps you build or buy a compound for friends and family. Expert team, curated properties, end-to-end assistance in the Bay Area, LA, and Seattle.">
+  <meta property="og:title" content="Live Near Friends — Build or buy a compound for friends and family">
+  <meta property="og:description" content="One simple platform + an expert team = your people become your neighbors.">
+  <meta property="og:type" content="website">
+  <title>Live Near Friends — Build or buy a compound for friends and family</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    /* ---- Design Tokens ---- */
+    :root {
+      --color-bg: #faf8f2;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-text-muted: #777;
+      --color-green: #2dd44c;
+      --color-green-hover: #26bf43;
+      --color-border: #e0ddd6;
+      --color-card-bg: #fff;
+      --color-card-border: #e0ddd6;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 16px;
+      --radius-pill: 24px;
+      --section-pad: 96px 48px;
+      --section-pad-mobile: 64px 24px;
+      --max-w: 1200px;
+      --transition: 0.15s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ---- Skip Link ---- */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--color-green);
+      color: #000;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 100;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      left: 0;
+    }
+
+    /* ---- Shared: Section Heading ---- */
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    /* ---- Shared: Eyebrow ---- */
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-green);
+      margin-bottom: 12px;
+    }
+
+    /* ---- Shared: CTA Buttons ---- */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: background var(--transition), border-color var(--transition), transform 0.1s;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 3px;
+    }
+    .btn-primary {
+      background: var(--color-green);
+      color: #000;
+    }
+    .btn-primary:hover { background: var(--color-green-hover); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text);
+      border: 1.5px solid #ccc;
+    }
+    .btn-secondary:hover {
+      border-color: #999;
+      background: rgba(0,0,0,0.03);
+    }
+    .btn-lg {
+      padding: 16px 32px;
+    }
+
+    /* ---- Announcement Banner ---- */
+    .announcement {
+      background: var(--color-green);
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #000;
+    }
+    .announcement a {
+      margin-left: 8px;
+      text-decoration: none;
+      background: #000;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: opacity var(--transition);
+    }
+    .announcement a:hover { opacity: 0.85; }
+    .announcement a:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* ---- Nav ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      color: var(--color-text);
+      text-decoration: none;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .logo:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 4px;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .nav-link:hover { color: var(--color-text-secondary); }
+    .nav-link:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 4px;
+    }
+    .nav-cta {
+      background: var(--color-green);
+      color: #000;
+      border: none;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .nav-cta:hover { background: var(--color-green-hover); }
+    .nav-cta:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 2px;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 48px 96px;
+      min-height: calc(100vh - 100px);
+    }
+    .hero-copy h1 {
+      font-family: var(--font-serif);
+      font-size: 58px;
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+    .hero-copy .subheader {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      max-width: 440px;
+      margin-bottom: 24px;
+    }
+
+    /* Availability */
+    .availability {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .avail-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+    }
+    .avail-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .avail-dot.active { background: #22c55e; }
+    .avail-dot.upcoming { background: #f59e0b; }
+    .avail-label {
+      font-weight: 700;
+      color: #333;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* CTA row */
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Slideshow placeholder */
+    .slideshow {
+      background: #e0ddd6;
+      border-radius: var(--radius-lg);
+      aspect-ratio: 3 / 4;
+      max-height: 560px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #8a8678;
+      font-size: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slideshow-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: #cec9be;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    .slideshow-dots {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 8px;
+    }
+    .slideshow-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #bfb9ac;
+    }
+    .slideshow-dots span:first-child {
+      background: #8a8678;
+    }
+
+    /* ---- Press ---- */
+    .press {
+      background: #c6f0f0;
+      padding: 56px 48px;
+    }
+    .press-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .press-item {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .press-quote {
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--color-text);
+      max-width: 300px;
+    }
+    .press-logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+    .press-logo.vox {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 28px;
+      font-weight: 900;
+      font-style: italic;
+    }
+    .press-logo.axios {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .press-logo.sf-standard {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .press-logo.sf-standard span {
+      font-weight: 900;
+    }
+
+    /* ---- Services ---- */
+    .services {
+      padding: var(--section-pad);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .services-header {
+      margin-bottom: 56px;
+      max-width: 560px;
+    }
+    .services-header h2 {
+      margin-bottom: 12px;
+    }
+    .services-header p {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    .panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      padding: 48px 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .panel:last-child {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .panel.reversed .panel-visual { order: 2; }
+    .panel.reversed .panel-copy { order: 1; }
+    .panel-visual {
+      background: #e8e5de;
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 14px;
+    }
+    .panel-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .panel-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+    }
+    .panel-title {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 400;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #f3f1eb;
+      color: var(--color-text-secondary);
+    }
+    .tag.green { background: #e8f5e9; color: #2e7d32; }
+    .tag.amber { background: #fff8e1; color: #f57f17; }
+    .tag.orange { background: #fff3e0; color: #e65100; }
+    .tag.blue { background: #e3f2fd; color: #1565c0; }
+    .panel-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .panel-steps li {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #444;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .panel-steps .snum {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-text);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---- Inspiration ---- */
+    .inspiration {
+      background: #d4f7a0;
+      padding: var(--section-pad);
+    }
+    .inspiration-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .inspiration h2 {
+      margin-bottom: 20px;
+    }
+    .inspiration-body {
+      font-size: 17px;
+      line-height: 1.65;
+      color: #333;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+    .inspiration-body p + p {
+      margin-top: 16px;
+    }
+    .inspiration .btn {
+      margin-bottom: 56px;
+    }
+    .video-placeholder {
+      background: #333;
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .play-btn:hover { background: rgba(0,0,0,0.75); }
+    .play-btn::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 14px 0 14px 24px;
+      border-color: transparent transparent transparent #fff;
+      margin-left: 4px;
+    }
+    .video-overlay-text {
+      position: absolute;
+      bottom: 24px;
+      left: 28px;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    /* ---- Fantasy / Social Proof ---- */
+    .fantasy {
+      padding: var(--section-pad);
+      max-width: var(--max-w);
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .fantasy h2 {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      grid-auto-rows: min-content;
+    }
+    .collage-item {
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .collage-item.blue { background: #bde4f4; }
+    .collage-item.green { background: #c4f0a8; }
+    .collage-item.pink { background: #f4b8d4; }
+    .collage-item.yellow { background: #f7e460; }
+    .collage-item.orange { background: #f5a855; }
+    .collage-item.cream { background: var(--color-bg); border: 1px solid var(--color-border); }
+    .collage-item.tall {
+      grid-row: span 2;
+    }
+    .collage-photo {
+      background: #d8d4cc;
+      border-radius: 10px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 13px;
+      overflow: hidden;
+    }
+    .collage-photo.tall-photo {
+      height: 100%;
+      min-height: 280px;
+      flex: 1;
+    }
+    .collage-source {
+      font-size: 11px;
+      font-weight: 600;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .collage-source .avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+    .collage-headline {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .collage-sub {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.45;
+    }
+    .collage-tweet {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+    .collage-tweet strong { font-weight: 700; }
+    .collage-metrics {
+      font-size: 12px;
+      color: #888;
+      display: flex;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    /* ---- What We Do ---- */
+    .whatwedo {
+      padding: var(--section-pad);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .whatwedo h2 {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .compare-table thead th {
+      padding: 20px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: left;
+      vertical-align: bottom;
+    }
+    .compare-table thead th:first-child {
+      width: 28%;
+      color: #999;
+    }
+    .compare-table thead th.col-us {
+      width: 36%;
+      background: var(--color-text);
+      color: #fff;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      padding-bottom: 16px;
+    }
+    .compare-table thead th.col-us .logo-text {
+      display: block;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      letter-spacing: 0;
+    }
+    .compare-table thead th.col-old {
+      width: 36%;
+      color: #999;
+    }
+    .compare-table tbody td {
+      padding: 28px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .compare-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .step-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+      padding-top: 4px;
+    }
+    .step-num {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      color: #ddd;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .col-us-cell {
+      background: var(--color-text);
+      color: #fff;
+    }
+    .compare-table tbody tr:last-child .col-us-cell {
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+    }
+    .col-us-cell p {
+      font-size: 16px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.9);
+    }
+    .us-check {
+      display: inline-block;
+      color: var(--color-green);
+      font-size: 18px;
+      margin-right: 6px;
+    }
+    .col-old-cell p {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--color-text-muted);
+    }
+    .old-x {
+      display: inline-block;
+      color: #d44;
+      font-size: 16px;
+      margin-right: 6px;
+      font-weight: 700;
+    }
+
+    /* Relationship callout */
+    .relationship-callout {
+      background: var(--color-text);
+      border-radius: 20px;
+      padding: 48px 52px;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .relationship-copy h3 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .relationship-copy h3 em {
+      color: var(--color-green);
+      font-style: normal;
+    }
+    .relationship-copy p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 13px 18px;
+    }
+    .check-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--color-green);
+    }
+    .check-item span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* ---- Team ---- */
+    .team {
+      padding: var(--section-pad);
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .team-copy h2 {
+      margin-bottom: 16px;
+    }
+    .team-copy > p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+    }
+    .team-role-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .team-role-list li {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #444;
+      padding-left: 28px;
+      position: relative;
+    }
+    .team-role-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-green);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .team-grid-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .team-grid-col:nth-child(1) { padding-top: 32px; }
+    .team-grid-col:nth-child(2) { padding-top: 0; }
+    .team-grid-col:nth-child(3) { padding-top: 56px; }
+    .team-photo {
+      background: #e0ddd6;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .team-photo.tall { aspect-ratio: 3 / 4; }
+    .team-photo.med  { aspect-ratio: 1 / 1; }
+    .team-photo.wide { aspect-ratio: 4 / 3; }
+    .team-photo-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 14px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.55));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border-radius: 0 0 14px 14px;
+    }
+    .team-photo:hover .team-photo-label { opacity: 1; }
+    .team-photo-label span {
+      display: block;
+      font-weight: 400;
+      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
+    }
+
+    /* ---- Get Inspired ---- */
+    .inspired {
+      padding: 96px 0;
+      overflow: hidden;
+    }
+    .inspired-top {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    .inspired-top h2 {
+      /* inherits .section-heading */
+    }
+    .tab-row {
+      display: flex;
+      gap: 4px;
+    }
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--color-border);
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: inherit;
+    }
+    .tab-btn:hover {
+      border-color: #ccc;
+      color: #333;
+    }
+    .tab-btn:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 2px;
+    }
+    .tab-btn.active {
+      background: var(--color-text);
+      border-color: var(--color-text);
+      color: #fff;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tab-desc {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      margin-bottom: 32px;
+    }
+    .tab-desc p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      max-width: 480px;
+    }
+    .property-scroll {
+      display: flex;
+      gap: 20px;
+      padding: 0 48px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .property-scroll::-webkit-scrollbar { display: none; }
+    .property-card {
+      flex-shrink: 0;
+      width: 320px;
+      scroll-snap-align: start;
+    }
+    .property-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #e0ddd6;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 13px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .property-location {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .property-detail {
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+    .property-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    .inspired-cta-row {
+      max-width: var(--max-w);
+      margin: 36px auto 0;
+      padding: 0 48px;
+    }
+
+    /* ---- FAQ ---- */
+    .faq {
+      padding: var(--section-pad);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .faq-item:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 0;
+      cursor: pointer;
+      user-select: none;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+    }
+    .faq-question:hover .faq-q-text { color: var(--color-text-secondary); }
+    .faq-question:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: -2px;
+      border-radius: 4px;
+    }
+    .faq-q-text {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.4;
+      transition: color var(--transition);
+      color: var(--color-text);
+    }
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.25s, border-color var(--transition);
+      pointer-events: none;
+    }
+    .faq-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: #999;
+      fill: none;
+      stroke-width: 2;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+      border-color: #999;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 0 0 24px 0;
+    }
+    .faq-answer p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #666;
+      max-width: 640px;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      border-top: 1px solid var(--color-border);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .footer-brand {
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-top: 12px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--color-text); }
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 4px;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 900px) {
+      :root {
+        --section-pad: 64px 24px;
+      }
+      .nav { padding: 16px 24px; }
+      .nav-link { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 24px 56px;
+        min-height: auto;
+      }
+      .hero-copy h1 { font-size: 40px; }
+      .hero-copy .subheader { font-size: 16px; }
+      .slideshow { aspect-ratio: 4 / 3; max-height: none; }
+      .press { padding: 40px 24px; }
+      .press-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .section-heading { font-size: 34px; }
+      .panel {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .panel.reversed .panel-visual { order: 0; }
+      .panel.reversed .panel-copy { order: 0; }
+      .collage { grid-template-columns: 1fr; }
+      .collage-item.tall { grid-row: span 1; }
+      .whatwedo h2 { margin-bottom: 40px; }
+      .compare-table, .compare-table thead, .compare-table tbody,
+      .compare-table th, .compare-table td, .compare-table tr {
+        display: block;
+      }
+      .compare-table thead { display: none; }
+      .compare-table tbody tr {
+        margin-bottom: 24px;
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .compare-table tbody td {
+        padding: 20px;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .compare-table tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #999;
+        margin-bottom: 6px;
+      }
+      .col-us-cell { border-radius: 0; }
+      .compare-table tbody tr:last-child .col-us-cell { border-radius: 0; }
+      .relationship-callout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px 24px;
+        margin-top: 36px;
+      }
+      .relationship-copy h3 { font-size: 24px; }
+      .team { grid-template-columns: 1fr; gap: 48px; }
+      .team-grid { max-width: 400px; }
+      .team-grid-col:nth-child(1) { padding-top: 20px; }
+      .team-grid-col:nth-child(3) { padding-top: 36px; }
+      .inspired { padding: 64px 0; }
+      .inspired-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 0 24px;
+      }
+      .tab-desc { padding: 0 24px; }
+      .property-scroll { padding: 0 24px; }
+      .property-card { width: 260px; }
+      .inspired-cta-row { padding: 0 24px; }
+      .faq-q-text { font-size: 16px; }
+      .footer {
+        flex-direction: column;
+        padding: 36px 24px;
+        gap: 24px;
+      }
+      .footer-links { flex-wrap: wrap; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <div class="announcement" role="banner">
+    We just launched in Los Angeles
+    <a href="#">Check it out &rarr;</a>
+  </div>
+
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/" class="logo">Live Near<br>Friends</a>
+      <div class="nav-right">
+        <a href="#" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">For sellers</a>
+        <a href="#" class="nav-link">Log in</a>
+        <button class="nav-cta">Get started</button>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <h1>Build or buy a compound<br>for friends and family.</h1>
+        <p class="subheader">One simple platform + an expert team = your people become your neighbors.</p>
+
+        <div class="availability">
+          <div class="avail-row">
+            <span class="avail-dot active" aria-hidden="true"></span>
+            <span class="avail-label">Now serving:</span> Bay Area, Los Angeles, Seattle
+          </div>
+          <div class="avail-row">
+            <span class="avail-dot upcoming" aria-hidden="true"></span>
+            <span class="avail-label">Coming soon:</span> Austin, Washington D.C.
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="#" class="btn btn-primary btn-lg">Get started</a>
+          <a href="#" class="btn btn-secondary btn-lg">Get on the waitlist</a>
+        </div>
+      </div>
+
+      <div class="slideshow" role="img" aria-label="Photo slideshow of lifestyle and property pictures">
+        <div class="slideshow-icon">&#x1F3E0;</div>
+        Photo Slideshow<br>Lifestyle &amp; property pictures
+        <div class="slideshow-dots" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="press" aria-label="Press mentions">
+      <div class="press-grid">
+        <div class="press-item">
+          <p class="press-quote">&ldquo;A reframing of what success looks like in America&rdquo;</p>
+          <div class="press-logo vox">Vox</div>
+        </div>
+        <div class="press-item">
+          <p class="press-quote">&ldquo;A cheat code for living a happy life&rdquo;</p>
+          <div class="press-logo axios">Axios</div>
+        </div>
+        <div class="press-item">
+          <p class="press-quote">&ldquo;The &lsquo;live near friends&rsquo; movement has leveled up.&rdquo;</p>
+          <div class="press-logo sf-standard">The <span>San Francisco</span> Standard</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fantasy" aria-label="Social proof and inspiration">
+      <h2 class="section-heading">Turn the fantasy into reality</h2>
+      <div class="collage">
+        <div class="collage-item blue tall">
+          <div class="collage-photo tall-photo">Photo placeholder</div>
+          <p class="collage-sub">When you live next door to your best friends.</p>
+        </div>
+
+        <div class="collage-item cream">
+          <div class="collage-source"><span class="avatar"></span> anu @anuatluru &middot; Nov 24, 2023</div>
+          <p class="collage-tweet"><strong>adult friendships</strong> are just employing increasingly aggressive pressure tactics to get your friends to move to your city</p>
+          <div class="collage-metrics">
+            <span>214 replies</span><span>4.9K reposts</span><span>41K likes</span>
+          </div>
+        </div>
+
+        <div class="collage-item pink tall">
+          <div class="collage-photo tall-photo">Photo placeholder</div>
+          <p class="collage-sub">Goodmorning. I'd say morning but I built a house next door to my bff and bring her coffee every morning while we chit chat</p>
+        </div>
+
+        <div class="collage-item green">
+          <div class="collage-source"><span class="avatar"></span> Soraya Sebghati @SorayaSpaghetti &middot; Sep 14, 2024</div>
+          <p class="collage-tweet"><strong>My best friend</strong> is moving within walking distance of me next month. Life is about to be a nationally syndicated sitcom broe</p>
+          <div class="collage-metrics">
+            <span>82 replies</span><span>2.1K reposts</span><span>17K likes</span>
+          </div>
+        </div>
+
+        <div class="collage-item blue">
+          <p class="collage-headline">Nick Allardice</p>
+          <p class="collage-sub">The Life-Changing Decision You're Not Prioritizing: Living Near Friends</p>
+        </div>
+
+        <div class="collage-item yellow">
+          <div class="collage-source"><span class="avatar"></span> Karen Chee @karencheee</div>
+          <p class="collage-tweet">I don't want fame or glory, I want a cul de sac where I live w all my friends and family</p>
+        </div>
+
+        <div class="collage-item orange">
+          <div class="collage-photo">Photo placeholder</div>
+          <p class="collage-sub">2 years ago my sister and I bought land across the street from each other</p>
+        </div>
+
+        <div class="collage-item cream">
+          <p class="collage-headline">From housemates to housemateys</p>
+          <p class="collage-sub">Why living with friends feels like a cheat code for adulthood</p>
+          <div class="collage-source"><span class="avatar"></span> Rhaina Cohen &middot; Aug 29, 2024</div>
+        </div>
+
+        <div class="collage-item green">
+          <p class="collage-headline">You'd Be Happier Living Closer to Friends. Why Don't You?</p>
+          <p class="collage-sub">A few theories why</p>
+          <div class="collage-source">Anne Helen Petersen &middot; Apr 02, 2023</div>
+        </div>
+
+        <div class="collage-item cream">
+          <p class="collage-source" style="font-style: italic;">The Atlantic</p>
+          <p class="collage-headline">Live Closer to Your Friends</p>
+          <p class="collage-sub">They make your life better. So why not turn them into your neighbors?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" aria-label="Our services">
+      <div class="services-header">
+        <h2 class="section-heading">Buy or build your compound</h2>
+        <p>Live Near Friends' curated platform and expert services make it happen — whether you're buying move-in ready or building from scratch.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-visual">Photo placeholder</div>
+        <div class="panel-copy">
+          <span class="panel-label">Option 1</span>
+          <h3 class="panel-title">Buy your compound</h3>
+          <div class="tags">
+            <span class="tag green">Ideal for first-time buyers</span>
+            <span class="tag amber">Medium effort</span>
+          </div>
+          <ol class="panel-steps">
+            <li><span class="snum">1</span> Explore move-in-ready properties on our curated platform</li>
+            <li><span class="snum">2</span> Work with the Live Near Friends network to purchase and finance a compound</li>
+            <li><span class="snum">3</span> End-to-end assistance</li>
+          </ol>
+          <a href="#" class="btn btn-primary">See what's in your city</a>
+        </div>
+      </div>
+
+      <div class="panel reversed">
+        <div class="panel-visual">Photo placeholder</div>
+        <div class="panel-copy">
+          <span class="panel-label">Option 2</span>
+          <h3 class="panel-title">Build your compound</h3>
+          <div class="tags">
+            <span class="tag green">Ideal for committed compound builders</span>
+            <span class="tag orange">High effort</span>
+            <span class="tag blue">Now booking for 2027</span>
+          </div>
+          <ol class="panel-steps">
+            <li><span class="snum">1</span> Find and buy a home perfect for multi-player expansion</li>
+            <li><span class="snum">2</span> Work with the Live Near Friends network on financing, rezoning, and designing your property</li>
+            <li><span class="snum">3</span> End-to-end assistance</li>
+          </ol>
+          <a href="#" class="btn btn-secondary">Get inspired</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="inspiration" aria-label="The inspiration behind Live Near Friends">
+      <div class="inspiration-inner">
+        <h2 class="section-heading">The inspiration: Radish in Oakland</h2>
+        <div class="inspiration-body">
+          <p>Live Near Friends founder Phil Levin and his wife Kristen bought a property in 2018.</p>
+          <p>What started as 7 friends has grown into 20 friends spread across 6 neighboring buildings and 8 kids.</p>
+        </div>
+        <a href="#" class="btn btn-primary">Build your own Radish</a>
+        <div class="video-placeholder" role="img" aria-label="Video: Friends' Pocket Hood documentary">
+          <div class="play-btn" aria-hidden="true"></div>
+          <div class="video-overlay-text">
+            Friends'<br>Pocket<br>Hood
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="whatwedo" aria-label="How it works">
+      <h2 class="section-heading">What we do</h2>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-us">
+              <span class="logo-text">Live Near Friends</span>
+              Our approach
+            </th>
+            <th class="col-old">The traditional way</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="step-label">
+                <span class="step-num" aria-hidden="true">1</span>
+                Find your property
+              </div>
+            </td>
+            <td class="col-us-cell" data-label="Live Near Friends">
+              <p><span class="us-check" aria-hidden="true">&#10003;</span> Curate properties that work for multiplayer housing</p>
+            </td>
+            <td data-label="Traditional way">
+              <p><span class="old-x" aria-hidden="true">&#10005;</span> Search Zillow for hours to find a few okay options</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="step-label">
+                <span class="step-num" aria-hidden="true">2</span>
+                Buy your property
+              </div>
+            </td>
+            <td class="col-us-cell" data-label="Live Near Friends">
+              <p><span class="us-check" aria-hidden="true">&#10003;</span> Partner with a real estate agent with experience in financing, purchasing, and creating agreements for co-buy groups</p>
+            </td>
+            <td data-label="Traditional way">
+              <p><span class="old-x" aria-hidden="true">&#10005;</span> Traditional realtor: &ldquo;You want to do what?&rdquo;</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="step-label">
+                <span class="step-num" aria-hidden="true">3</span>
+                Build or renovate
+              </div>
+            </td>
+            <td class="col-us-cell" data-label="Live Near Friends">
+              <p><span class="us-check" aria-hidden="true">&#10003;</span> Expertise in zoning, finances, and compound design. End-to-end assistance from purchase to move-in day.</p>
+            </td>
+            <td data-label="Traditional way">
+              <p><span class="old-x" aria-hidden="true">&#10005;</span> Months of back-and-forth with no compound-specific expertise</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Relationship callout -->
+      <div class="relationship-callout">
+        <div class="relationship-copy">
+          <h3>We design the relationship, <em>not just the buildings.</em></h3>
+          <p>What happens when one family wants to sell in 5&nbsp;years? How do you split shared spaces? Who decides on renovations? We plan for all of this on day&nbsp;one &mdash; so your compound is built on solid ground, socially and legally.</p>
+        </div>
+        <div class="checklist">
+          <div class="check-item">
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Ownership structure templates (TIC / subdivision)</span>
+          </div>
+          <div class="check-item">
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Exit provisions &amp; buyout frameworks</span>
+          </div>
+          <div class="check-item">
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Decision rules for shared spaces</span>
+          </div>
+          <div class="check-item">
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Conflict resolution frameworks</span>
+          </div>
+          <div class="check-item">
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Uneven capital contribution modeling</span>
+          </div>
+          <div class="check-item">
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Facilitated alignment sessions</span>
+          </div>
+          <div class="check-item">
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Legal partners specializing in co-ownership</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team" aria-label="Our team">
+      <div class="team-copy">
+        <div class="eyebrow">Our team</div>
+        <h2 class="section-heading">We pull together the people you need.</h2>
+        <p>When you work with Live Near Friends, you work with a network of friend-and-family compound specialists:</p>
+        <ul class="team-role-list">
+          <li><strong>Real estate agents</strong> who specialize in multi-party purchases and compound-friendly properties</li>
+          <li><strong>Lawyers</strong> with expertise in co-ownership agreements, LLCs, and shared property structures</li>
+          <li><strong>Architects</strong> with experience in ADUs, multi-unit conversions, and compound layouts</li>
+          <li><strong>Compound builders</strong> who've done it before and can guide you through every step</li>
+        </ul>
+      </div>
+
+      <div class="team-grid" aria-hidden="true">
+        <div class="team-grid-col">
+          <div class="team-photo tall">
+            <div class="team-photo-label">Sarah Chen<span>Real Estate Agent</span></div>
+          </div>
+          <div class="team-photo wide">
+            <div class="team-photo-label">Marcus Rivera<span>Architect</span></div>
+          </div>
+        </div>
+        <div class="team-grid-col">
+          <div class="team-photo med">
+            <div class="team-photo-label">Jamie Okonkwo<span>Lawyer</span></div>
+          </div>
+          <div class="team-photo tall">
+            <div class="team-photo-label">Priya Patel<span>Compound Builder</span></div>
+          </div>
+        </div>
+        <div class="team-grid-col">
+          <div class="team-photo wide">
+            <div class="team-photo-label">David Kim<span>Real Estate Agent</span></div>
+          </div>
+          <div class="team-photo med">
+            <div class="team-photo-label">Elena Torres<span>Architect</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="inspired" aria-label="Get inspired with properties">
+      <div class="inspired-top">
+        <div>
+          <div class="eyebrow">Get inspired</div>
+          <h2 class="section-heading">Get inspired</h2>
+        </div>
+        <div class="tab-row" role="tablist">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-readymade" onclick="switchTab('readymade', this)">Ready-made compounds</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-build" onclick="switchTab('build', this)">Buy-to-build</button>
+        </div>
+      </div>
+
+      <div id="tab-readymade" class="tab-content active" role="tabpanel">
+        <div class="tab-desc">
+          <p>Properties our clients have purchased over the past year.</p>
+        </div>
+        <div class="property-scroll">
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Oakland, CA</div>
+            <div class="property-detail">4 units &middot; 6 bed / 4 bath</div>
+            <span class="property-tag">Move-in ready</span>
+          </div>
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Los Angeles, CA</div>
+            <div class="property-detail">Duplex + ADU &middot; 5 bed / 3 bath</div>
+            <span class="property-tag">Move-in ready</span>
+          </div>
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Seattle, WA</div>
+            <div class="property-detail">Triplex &middot; 7 bed / 4 bath</div>
+            <span class="property-tag">Move-in ready</span>
+          </div>
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Bay Area, CA</div>
+            <div class="property-detail">Main house + cottage &middot; 4 bed / 3 bath</div>
+            <span class="property-tag">Move-in ready</span>
+          </div>
+        </div>
+        <div class="inspired-cta-row">
+          <a href="#" class="btn btn-primary">See what's available now</a>
+        </div>
+      </div>
+
+      <div id="tab-build" class="tab-content" role="tabpanel">
+        <div class="tab-desc">
+          <p>Properties with the right bones for a compound conversion — ADU potential, multi-unit zoning, or room to expand.</p>
+        </div>
+        <div class="property-scroll">
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Oakland Hills, CA</div>
+            <div class="property-detail">0.4 acres &middot; ADU-zoned</div>
+          </div>
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Silver Lake, LA</div>
+            <div class="property-detail">R2 lot &middot; Multi-unit eligible</div>
+          </div>
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Ballard, Seattle</div>
+            <div class="property-detail">Corner lot &middot; Expansion ready</div>
+          </div>
+          <div class="property-card">
+            <div class="property-photo">Photo</div>
+            <div class="property-location">Temescal, Oakland</div>
+            <div class="property-detail">Large yard &middot; Detached garage</div>
+          </div>
+        </div>
+        <div class="inspired-cta-row">
+          <a href="#" class="btn btn-secondary">Explore options</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" aria-label="Frequently asked questions">
+      <h2 class="section-heading">Frequently asked questions</h2>
+
+      <div class="faq-item open">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="true">
+          <span class="faq-q-text">Where does Live Near Friends operate?</span>
+          <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>We currently serve the Bay Area, Los Angeles, and Seattle, with Austin and Washington D.C. coming soon. Our team and network of specialists are expanding to new markets regularly, so check back if you don't see your city yet.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span class="faq-q-text">How much does it cost to work with Live Near Friends?</span>
+          <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Our pricing depends on the scope of your project and the services you need. Get in touch with our team for a free consultation, and we'll walk you through the costs based on whether you're buying a ready-made compound or building from scratch.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span class="faq-q-text">What types of properties make for the best compounds?</span>
+          <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Multi-unit properties, homes with ADU potential, large lots with room to build, and properties in zones that allow additional dwelling units all make great candidates. The best compounds tend to balance private living spaces with shared outdoor areas and common spaces.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span class="faq-q-text">What should I look for when purchasing a compound?</span>
+          <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Key factors include zoning regulations, the number of separate living units (or the potential to add them), shared outdoor space, and proximity to amenities. It's also important to consider the legal structure — how ownership, costs, and decision-making will be shared among your group.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span class="faq-q-text">Why should I live in a compound?</span>
+          <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Compound living gives you the best of both worlds: the privacy of your own home with the built-in community of your closest friends and family next door. It means spontaneous dinners, shared childcare, lower costs through shared resources, and the deep sense of belonging that comes from having your people nearby.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span class="faq-q-text">What's different about buying a compound than buying a single-family property?</span>
+          <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Compound purchases often involve multiple buyers, unique financing structures, and properties that don't fit neatly into traditional real estate categories. You'll need specialists who understand co-ownership agreements, multi-unit zoning, and group financing — which is exactly what our network provides.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div>
+      <div class="footer-brand">Live Near<br>Friends</div>
+      <p class="footer-copy">&copy; 2026 Live Near Friends. All rights reserved.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#">Blog</a>
+      <a href="#">For sellers</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </nav>
+  </footer>
+
+  <script>
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+      document.querySelectorAll('.tab-btn').forEach(function(el) {
+        el.classList.remove('active');
+        el.setAttribute('aria-selected', 'false');
+      });
+      document.getElementById('tab-' + tab).classList.add('active');
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+
+    // Toggle aria-expanded on accordion buttons
+    document.querySelectorAll('.step-header, .faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+      });
+    });
+  </script>
+</body>
+</html>
