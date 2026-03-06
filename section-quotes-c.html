@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotes & Stats — Mockup C: Margin Callouts & Pull Quotes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    :root {
+      --color-bg: #faf8f2;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-text-muted: #777;
+      --color-green: #2dd44c;
+      --color-border: #e0ddd6;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Demo section placeholders */
+    .demo-section {
+      padding: 80px 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .demo-section h2 {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      color: #ccc;
+    }
+
+    /* ==============================
+       CALLOUT SYSTEM
+       ============================== */
+
+    /* --- Type 1: Pull quote in margin --- */
+    .section-with-callout {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 56px;
+      align-items: start;
+    }
+    .section-main h2 {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      color: #ccc;
+      text-align: center;
+    }
+
+    .margin-callout {
+      position: sticky;
+      top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Quote card */
+    .callout-quote {
+      background: #fff;
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .callout-quote p {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.45;
+      font-style: italic;
+      color: var(--color-text);
+      margin-bottom: 12px;
+    }
+    .callout-quote cite {
+      font-size: 11px;
+      font-weight: 700;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+    }
+
+    /* Stat card */
+    .callout-stat {
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+    .callout-stat.green {
+      background: var(--color-green);
+    }
+    .callout-stat.dark {
+      background: var(--color-text);
+    }
+    .callout-stat-num {
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .callout-stat.green .callout-stat-num { color: #000; }
+    .callout-stat.dark .callout-stat-num { color: var(--color-green); }
+    .callout-stat-label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .callout-stat.green .callout-stat-label { color: rgba(0,0,0,0.5); }
+    .callout-stat.dark .callout-stat-label { color: rgba(255,255,255,0.5); }
+
+    /* Fact card */
+    .callout-fact {
+      background: var(--color-text);
+      border-radius: 16px;
+      padding: 20px 24px;
+    }
+    .callout-fact p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.7);
+    }
+    .callout-fact strong {
+      color: var(--color-green);
+    }
+
+    /* --- Type 2: Full-width pull quote break --- */
+    .pull-quote-break {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      display: grid;
+      grid-template-columns: 4px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .pull-quote-line {
+      background: var(--color-green);
+      border-radius: 2px;
+      min-height: 100%;
+    }
+    .pull-quote-content blockquote {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.3;
+      font-style: italic;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+    .pull-quote-content cite {
+      font-size: 13px;
+      font-weight: 700;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+    }
+
+    /* --- Type 3: Annotated stat break --- */
+    .annotated-break {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .annotated-break::before,
+    .annotated-break::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+    .annotated-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      background: #fff;
+      border: 1.5px solid var(--color-border);
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .annotated-pill-stat {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1;
+    }
+    .annotated-pill-label {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    /* --- Type 4: Sticky note style --- */
+    .sticky-note {
+      position: relative;
+      max-width: 300px;
+      padding: 24px 24px 20px;
+      border-radius: 4px 4px 4px 20px;
+      font-size: 15px;
+      line-height: 1.5;
+      box-shadow: 2px 3px 12px rgba(0,0,0,0.06);
+    }
+    .sticky-note.yellow {
+      background: #fff9db;
+      color: #665500;
+    }
+    .sticky-note.green {
+      background: #d4f7a0;
+      color: #2a5000;
+    }
+    .sticky-note.pink {
+      background: #fde8f0;
+      color: #6b2040;
+    }
+    .sticky-note p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .sticky-note cite {
+      font-size: 11px;
+      font-weight: 700;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.5;
+    }
+
+    /* Layout for sticky notes between sections */
+    .sticky-cluster {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 32px 48px;
+      flex-wrap: wrap;
+    }
+    .sticky-cluster .sticky-note:nth-child(1) { transform: rotate(-2deg); }
+    .sticky-cluster .sticky-note:nth-child(2) { transform: rotate(1.5deg) translateY(12px); }
+    .sticky-cluster .sticky-note:nth-child(3) { transform: rotate(-1deg) translateY(-6px); }
+
+    @media (max-width: 900px) {
+      .section-with-callout {
+        grid-template-columns: 1fr;
+        padding: 48px 24px;
+        gap: 32px;
+      }
+      .margin-callout {
+        position: static;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 8px;
+      }
+      .margin-callout > * { min-width: 240px; flex-shrink: 0; }
+      .pull-quote-break { padding: 40px 24px; }
+      .pull-quote-content blockquote { font-size: 24px; }
+      .annotated-break { padding: 32px 24px; gap: 20px; }
+      .annotated-pill { padding: 10px 20px; }
+      .annotated-pill-stat { font-size: 22px; }
+      .sticky-cluster { padding: 24px; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ EXAMPLE 1: Section with margin callouts ============ -->
+
+  <div class="section-with-callout">
+    <div class="section-main">
+      <h2>[ What We Do Section ]</h2>
+      <p style="color:#ccc; margin-top:16px; text-align:center;">The main section content lives here — the margin callouts stick alongside as you scroll.</p>
+      <div style="height: 400px;"></div>
+    </div>
+    <div class="margin-callout">
+      <div class="callout-stat green">
+        <div class="callout-stat-num">200+</div>
+        <div class="callout-stat-label">Compounds created</div>
+      </div>
+      <div class="callout-quote">
+        <p>&ldquo;They handled everything — the legal stuff, the zoning, even our group&rsquo;s disagreements.&rdquo;</p>
+        <cite>— Priya K., Los Angeles</cite>
+      </div>
+      <div class="callout-stat dark">
+        <div class="callout-stat-num">98%</div>
+        <div class="callout-stat-label">Client satisfaction</div>
+      </div>
+      <div class="callout-fact">
+        <p><strong>Did you know?</strong> The average LNF compound takes 8 months from search to move-in — 3.2x faster than going solo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EXAMPLE 2: Pull quote with green accent line ============ -->
+
+  <div class="pull-quote-break">
+    <div class="pull-quote-line"></div>
+    <div class="pull-quote-content">
+      <blockquote>&ldquo;We went from a dream to moving in next door to our best friends in under a year.&rdquo;</blockquote>
+      <cite>— Sarah &amp; Mike, Oakland CA</cite>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ Team Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 3: Annotated stat pill break ============ -->
+
+  <div class="annotated-break">
+    <div class="annotated-pill">
+      <span class="annotated-pill-stat">87%</span>
+      <span class="annotated-pill-label">say compound living improved their quality of life</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ Discover What's Possible Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 4: Sticky note cluster ============ -->
+
+  <div class="sticky-cluster">
+    <div class="sticky-note yellow">
+      <p>&ldquo;Our kids play together every day. It&rsquo;s the village we always wanted.&rdquo;</p>
+      <cite>— Jen &amp; Marco, Bay Area</cite>
+    </div>
+    <div class="sticky-note green">
+      <p>&ldquo;I didn&rsquo;t know this was possible until I found Live Near Friends.&rdquo;</p>
+      <cite>— David R., Seattle</cite>
+    </div>
+    <div class="sticky-note pink">
+      <p>&ldquo;Spontaneous dinners, shared childcare, and my best friend is 30 seconds away.&rdquo;</p>
+      <cite>— Amy T., Los Angeles</cite>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ FAQ Section ]</h2>
+  </div>
+
+</body>
+</html>

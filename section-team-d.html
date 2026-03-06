@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team - Mockup D: Staggered Photo Grid</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .team {
+      padding: 96px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ---- Copy Side ---- */
+    .team-copy .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #2dd44c;
+      margin-bottom: 12px;
+    }
+    .team-copy h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .team-copy > p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 24px;
+    }
+    .team-role-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .team-role-list li {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #444;
+      padding-left: 28px;
+      position: relative;
+    }
+    .team-role-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2dd44c;
+    }
+
+    /* ---- Zig-Zag Photo Grid ---- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .team-grid-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Stagger: col 1 starts normal, col 2 offset down, col 3 offset up */
+    .team-grid-col:nth-child(1) {
+      padding-top: 32px;
+    }
+    .team-grid-col:nth-child(2) {
+      padding-top: 0;
+    }
+    .team-grid-col:nth-child(3) {
+      padding-top: 56px;
+    }
+
+    .team-photo {
+      background: #e0ddd6;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Varying heights for dynamic feel */
+    .team-photo.tall { aspect-ratio: 3 / 4; }
+    .team-photo.med  { aspect-ratio: 4 / 4; }
+    .team-photo.wide { aspect-ratio: 4 / 3; }
+
+    /* Subtle name overlay on hover */
+    .team-photo-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 14px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.55));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border-radius: 0 0 14px 14px;
+    }
+    .team-photo:hover .team-photo-label {
+      opacity: 1;
+    }
+    .team-photo-label span {
+      display: block;
+      font-weight: 400;
+      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .team {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 64px 24px;
+      }
+      .team-copy h2 { font-size: 34px; }
+      .team-grid {
+        max-width: 400px;
+      }
+      .team-grid-col:nth-child(1) { padding-top: 20px; }
+      .team-grid-col:nth-child(3) { padding-top: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="team">
+    <div class="team-copy">
+      <div class="eyebrow">Our team</div>
+      <h2>We pull together the people you need.</h2>
+      <p>When you work with Live Near Friends, you work with a network of friend-and-family compound specialists:</p>
+      <ul class="team-role-list">
+        <li><strong>Real estate agents</strong> who specialize in multi-party purchases and compound-friendly properties</li>
+        <li><strong>Lawyers</strong> with expertise in co-ownership agreements, LLCs, and shared property structures</li>
+        <li><strong>Architects</strong> with experience in ADUs, multi-unit conversions, and compound layouts</li>
+        <li><strong>Compound builders</strong> who've done it before and can guide you through every step</li>
+      </ul>
+    </div>
+
+    <div class="team-grid">
+      <!-- Column 1 -->
+      <div class="team-grid-col">
+        <div class="team-photo tall">
+          <div class="team-photo-label">Sarah Chen<span>Real Estate Agent</span></div>
+        </div>
+        <div class="team-photo wide">
+          <div class="team-photo-label">Marcus Rivera<span>Architect</span></div>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="team-grid-col">
+        <div class="team-photo med">
+          <div class="team-photo-label">Jamie Okonkwo<span>Lawyer</span></div>
+        </div>
+        <div class="team-photo tall">
+          <div class="team-photo-label">Priya Patel<span>Compound Builder</span></div>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="team-grid-col">
+        <div class="team-photo wide">
+          <div class="team-photo-label">David Kim<span>Real Estate Agent</span></div>
+        </div>
+        <div class="team-photo med">
+          <div class="team-photo-label">Elena Torres<span>Architect</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

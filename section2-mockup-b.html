@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Section - Mockup B: Stacked Panels</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .services {
+      padding: 96px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      margin-bottom: 56px;
+      max-width: 560px;
+    }
+    .services-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .services-header p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Panel layout: image left, copy right — alternating */
+    .panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      padding: 48px 0;
+      border-top: 1px solid #e0ddd6;
+    }
+    .panel:last-child {
+      border-bottom: 1px solid #e0ddd6;
+    }
+    .panel.reversed .panel-visual { order: 2; }
+    .panel.reversed .panel-copy { order: 1; }
+
+    .panel-visual {
+      background: #e8e5de;
+      border-radius: 16px;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 14px;
+    }
+
+    .panel-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+    }
+
+    .panel-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #f3f1eb;
+      color: #555;
+    }
+    .tag.green { background: #e8f5e9; color: #2e7d32; }
+    .tag.amber { background: #fff8e1; color: #f57f17; }
+    .tag.orange { background: #fff3e0; color: #e65100; }
+    .tag.blue { background: #e3f2fd; color: #1565c0; }
+
+    .panel-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .panel-steps li {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #444;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel-cta {
+      display: inline-block;
+      align-self: flex-start;
+      background: #2dd44c;
+      color: #000;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+      margin-top: 4px;
+    }
+    .panel-cta:hover { background: #26bf43; }
+
+    .panel-cta.outline {
+      background: transparent;
+      border: 1.5px solid #ccc;
+      color: #1a1a1a;
+    }
+    .panel-cta.outline:hover {
+      border-color: #999;
+      background: rgba(0,0,0,0.03);
+    }
+
+    @media (max-width: 800px) {
+      .services { padding: 64px 24px; }
+      .services-header h2 { font-size: 34px; }
+      .panel {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .panel.reversed .panel-visual { order: 0; }
+      .panel.reversed .panel-copy { order: 0; }
+    }
+  </style>
+</head>
+<body>
+  <section class="services">
+    <div class="services-header">
+      <h2>Buy or build your compound</h2>
+      <p>Live Near Friends' curated platform and expert services make it happen — whether you're buying move-in ready or building from scratch.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-visual">Photo placeholder</div>
+      <div class="panel-copy">
+        <span class="panel-label">Option 1</span>
+        <h3 class="panel-title">Buy your compound</h3>
+        <div class="tags">
+          <span class="tag green">Ideal for first-time buyers</span>
+          <span class="tag amber">Medium effort</span>
+        </div>
+        <ol class="panel-steps">
+          <li><span class="step-num">1</span> Explore move-in-ready properties on our curated platform</li>
+          <li><span class="step-num">2</span> Work with the Live Near Friends network to purchase and finance a compound</li>
+          <li><span class="step-num">3</span> End-to-end assistance</li>
+        </ol>
+        <a href="#" class="panel-cta">See what's in your city</a>
+      </div>
+    </div>
+
+    <div class="panel reversed">
+      <div class="panel-visual">Photo placeholder</div>
+      <div class="panel-copy">
+        <span class="panel-label">Option 2</span>
+        <h3 class="panel-title">Build your compound</h3>
+        <div class="tags">
+          <span class="tag green">Ideal for committed compound builders</span>
+          <span class="tag orange">High effort</span>
+          <span class="tag blue">Now booking for 2027</span>
+        </div>
+        <ol class="panel-steps">
+          <li><span class="step-num">1</span> Find and buy a home perfect for multi-player expansion</li>
+          <li><span class="step-num">2</span> Work with the Live Near Friends network on financing, rezoning, and designing your property</li>
+          <li><span class="step-num">3</span> End-to-end assistance</li>
+        </ol>
+        <a href="#" class="panel-cta outline">Get inspired</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

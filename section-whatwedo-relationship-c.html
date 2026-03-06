@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What We Do — Mockup C: Table + Full-Width Dark Band</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    :root {
+      --color-bg: #faf8f2;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-text-muted: #777;
+      --color-green: #2dd44c;
+      --color-border: #e0ddd6;
+      --color-card-bg: #fff;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius-md: 14px;
+      --transition: 0.15s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Table section (cream bg) ---- */
+    .whatwedo-top {
+      padding: 96px 48px 72px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .whatwedo-top h2 {
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .compare-table thead th {
+      padding: 20px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: left;
+      vertical-align: bottom;
+    }
+    .compare-table thead th:first-child {
+      width: 28%;
+      color: #999;
+    }
+    .compare-table thead th.col-us {
+      width: 36%;
+      background: var(--color-text);
+      color: #fff;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      padding-bottom: 16px;
+    }
+    .compare-table thead th.col-us .logo-text {
+      display: block;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      letter-spacing: 0;
+    }
+    .compare-table thead th.col-old {
+      width: 36%;
+      color: #999;
+    }
+    .compare-table tbody td {
+      padding: 28px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .compare-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .step-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+      padding-top: 4px;
+    }
+    .step-num {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      color: #ddd;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .col-us-cell {
+      background: var(--color-text);
+      color: #fff;
+    }
+    .compare-table tbody tr:last-child .col-us-cell {
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+    }
+    .col-us-cell p {
+      font-size: 16px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.9);
+    }
+    .us-check {
+      display: inline-block;
+      color: var(--color-green);
+      font-size: 18px;
+      margin-right: 6px;
+    }
+    .col-old-cell p {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--color-text-muted);
+    }
+    .old-x {
+      display: inline-block;
+      color: #d44;
+      font-size: 16px;
+      margin-right: 6px;
+      font-weight: 700;
+    }
+
+    /* ---- Full-width dark band ---- */
+    .relationship-band {
+      background: var(--color-text);
+      padding: 80px 48px;
+    }
+    .relationship-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .relationship-copy h3 {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .relationship-copy h3 em {
+      color: var(--color-green);
+      font-style: normal;
+    }
+    .relationship-copy p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      max-width: 440px;
+    }
+
+    .checklist {
+      columns: 2;
+      column-gap: 12px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      break-inside: avoid;
+    }
+    .check-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--color-green);
+    }
+    .check-item span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 900px) {
+      .whatwedo-top { padding: 64px 24px 48px; }
+      .whatwedo-top h2 { font-size: 34px; margin-bottom: 40px; }
+      .compare-table, .compare-table thead, .compare-table tbody,
+      .compare-table th, .compare-table td, .compare-table tr {
+        display: block;
+      }
+      .compare-table thead { display: none; }
+      .compare-table tbody tr {
+        margin-bottom: 24px;
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .compare-table tbody td {
+        padding: 20px;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .compare-table tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #999;
+        margin-bottom: 6px;
+      }
+      .col-us-cell { border-radius: 0; }
+      .compare-table tbody tr:last-child .col-us-cell { border-radius: 0; }
+      .relationship-band { padding: 56px 24px; }
+      .relationship-inner { grid-template-columns: 1fr; gap: 32px; }
+      .relationship-copy h3 { font-size: 26px; }
+      .checklist { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Table section -->
+  <section class="whatwedo-top" aria-label="How it works">
+    <h2>What we do</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-us">
+            <span class="logo-text">Live Near Friends</span>
+            Our approach
+          </th>
+          <th class="col-old">The traditional way</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="step-label">
+              <span class="step-num">1</span>
+              Find your property
+            </div>
+          </td>
+          <td class="col-us-cell" data-label="Live Near Friends">
+            <p><span class="us-check">&#10003;</span> Curate properties that work for multiplayer housing</p>
+          </td>
+          <td data-label="Traditional way">
+            <p><span class="old-x">&#10005;</span> Search Zillow for hours to find a few okay options</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="step-label">
+              <span class="step-num">2</span>
+              Buy your property
+            </div>
+          </td>
+          <td class="col-us-cell" data-label="Live Near Friends">
+            <p><span class="us-check">&#10003;</span> Partner with a real estate agent with experience in financing, purchasing, and creating agreements for co-buy groups</p>
+          </td>
+          <td data-label="Traditional way">
+            <p><span class="old-x">&#10005;</span> Traditional realtor: &ldquo;You want to do what?&rdquo;</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="step-label">
+              <span class="step-num">3</span>
+              Build or renovate
+            </div>
+          </td>
+          <td class="col-us-cell" data-label="Live Near Friends">
+            <p><span class="us-check">&#10003;</span> Expertise in zoning, finances, and compound design. End-to-end assistance from purchase to move-in day.</p>
+          </td>
+          <td data-label="Traditional way">
+            <p><span class="old-x">&#10005;</span> Months of back-and-forth with no compound-specific expertise</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Full-width dark relationship band -->
+  <div class="relationship-band">
+    <div class="relationship-inner">
+      <div class="relationship-copy">
+        <h3>We design the relationship, <em>not just the buildings.</em></h3>
+        <p>What happens when one family wants to sell in 5&nbsp;years? How do you split shared spaces? Who decides on renovations? We plan for all of this on day&nbsp;one &mdash; so your compound is built on solid ground, socially and legally.</p>
+      </div>
+      <div class="checklist">
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Ownership structure templates (TIC / subdivision)</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Exit provisions &amp; buyout frameworks</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Decision rules for shared spaces</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Conflict resolution frameworks</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Uneven capital contribution modeling</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Facilitated alignment sessions</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Legal partners specializing in co-ownership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Inspired - Mockup A: Two-Column Property Grid</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .inspired {
+      padding: 96px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .inspired-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .inspired-header .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #2dd44c;
+      margin-bottom: 12px;
+    }
+    .inspired-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .inspired-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .inspired-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .col-header {
+      margin-bottom: 28px;
+    }
+    .col-header h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .col-header p {
+      font-size: 15px;
+      line-height: 1.55;
+      color: #777;
+    }
+
+    .property-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+
+    .property-thumb {
+      background: #e0ddd6;
+      border-radius: 12px;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    .col-cta {
+      display: inline-block;
+      align-self: flex-start;
+      background: #2dd44c;
+      color: #000;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .col-cta:hover { background: #26bf43; }
+    .col-cta.secondary {
+      background: transparent;
+      border: 1.5px solid #ccc;
+      color: #1a1a1a;
+    }
+    .col-cta.secondary:hover {
+      border-color: #999;
+      background: rgba(0,0,0,0.03);
+    }
+
+    @media (max-width: 900px) {
+      .inspired { padding: 64px 24px; }
+      .inspired-header h2 { font-size: 34px; }
+      .inspired-columns { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 560px) {
+      .property-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <section class="inspired">
+    <div class="inspired-header">
+      <div class="eyebrow">Get inspired</div>
+      <h2>Get inspired</h2>
+    </div>
+
+    <div class="inspired-columns">
+      <div class="inspired-col">
+        <div class="col-header">
+          <h3>Ready-made compounds</h3>
+          <p>Properties our clients have purchased over the past year.</p>
+        </div>
+        <div class="property-grid">
+          <div class="property-thumb">Photo</div>
+          <div class="property-thumb">Photo</div>
+          <div class="property-thumb">Photo</div>
+          <div class="property-thumb">Photo</div>
+        </div>
+        <a href="#" class="col-cta">See what's available now</a>
+      </div>
+
+      <div class="inspired-col">
+        <div class="col-header">
+          <h3>Buy-to-build properties</h3>
+          <p>Properties with the right bones for a compound conversion — ADU potential, multi-unit zoning, or room to expand.</p>
+        </div>
+        <div class="property-grid">
+          <div class="property-thumb">Photo</div>
+          <div class="property-thumb">Photo</div>
+          <div class="property-thumb">Photo</div>
+          <div class="property-thumb">Photo</div>
+        </div>
+        <a href="#" class="col-cta secondary">Explore options</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

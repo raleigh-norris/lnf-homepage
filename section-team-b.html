@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team - Mockup B: Photo Strip + Copy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .team {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 96px 0;
+      overflow: hidden;
+    }
+
+    .team-copy {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+
+    .team-copy .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #2dd44c;
+      margin-bottom: 12px;
+    }
+    .team-copy h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+    .team-copy p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Scrolling photo strip */
+    .photo-strip {
+      display: flex;
+      gap: 20px;
+      padding: 0 48px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .photo-strip::-webkit-scrollbar { display: none; }
+
+    .team-member {
+      flex-shrink: 0;
+      width: 240px;
+      scroll-snap-align: start;
+    }
+    .member-photo {
+      width: 240px;
+      height: 300px;
+      border-radius: 14px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .member-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .member-role {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    .member-role-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Specialties strip below */
+    .specialties {
+      max-width: 1100px;
+      margin: 56px auto 0;
+      padding: 0 48px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .specialty {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+    }
+    .specialty-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #2dd44c;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .team { padding: 64px 0; }
+      .team-copy {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 24px;
+        margin-bottom: 40px;
+      }
+      .team-copy h2 { font-size: 34px; }
+      .photo-strip { padding: 0 24px; }
+      .specialties { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="team">
+    <div class="team-copy">
+      <div>
+        <div class="eyebrow">Our team</div>
+        <h2>We pull together the people you need.</h2>
+      </div>
+      <p>When you work with Live Near Friends, you work with a network of friend-and-family compound specialists: real estate agents, lawyers, architects, and experienced compound builders.</p>
+    </div>
+
+    <div class="photo-strip">
+      <div class="team-member">
+        <div class="member-photo">Photo</div>
+        <div class="member-name">Team Member</div>
+        <div class="member-role">Real Estate Agent</div>
+        <span class="member-role-tag">Bay Area</span>
+      </div>
+      <div class="team-member">
+        <div class="member-photo">Photo</div>
+        <div class="member-name">Team Member</div>
+        <div class="member-role">Lawyer</div>
+        <span class="member-role-tag">Co-ownership</span>
+      </div>
+      <div class="team-member">
+        <div class="member-photo">Photo</div>
+        <div class="member-name">Team Member</div>
+        <div class="member-role">Architect</div>
+        <span class="member-role-tag">ADU &amp; Multi-unit</span>
+      </div>
+      <div class="team-member">
+        <div class="member-photo">Photo</div>
+        <div class="member-name">Team Member</div>
+        <div class="member-role">Compound Builder</div>
+        <span class="member-role-tag">Oakland</span>
+      </div>
+      <div class="team-member">
+        <div class="member-photo">Photo</div>
+        <div class="member-name">Team Member</div>
+        <div class="member-role">Real Estate Agent</div>
+        <span class="member-role-tag">Los Angeles</span>
+      </div>
+      <div class="team-member">
+        <div class="member-photo">Photo</div>
+        <div class="member-name">Team Member</div>
+        <div class="member-role">Financial Advisor</div>
+        <span class="member-role-tag">Co-buy groups</span>
+      </div>
+    </div>
+
+    <div class="specialties">
+      <div class="specialty"><span class="specialty-dot"></span> Real estate agents</div>
+      <div class="specialty"><span class="specialty-dot"></span> Lawyers</div>
+      <div class="specialty"><span class="specialty-dot"></span> Architects</div>
+      <div class="specialty"><span class="specialty-dot"></span> Compound builders</div>
+      <div class="specialty"><span class="specialty-dot"></span> Financial advisors</div>
+    </div>
+  </section>
+</body>
+</html>

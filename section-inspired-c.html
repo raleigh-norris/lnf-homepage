@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Inspired - Mockup C: Stacked Full-Width Panels</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .inspired {
+      padding: 96px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .inspired-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .inspired-header .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #2dd44c;
+      margin-bottom: 12px;
+    }
+    .inspired-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    /* Panel */
+    .inspired-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: #fff;
+      border: 1px solid #e8e5de;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .inspired-panel.reverse .panel-copy { order: 2; }
+    .inspired-panel.reverse .panel-gallery { order: 1; }
+
+    .panel-copy {
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .panel-copy h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .panel-copy p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #777;
+      margin-bottom: 32px;
+      max-width: 380px;
+    }
+    .panel-cta {
+      display: inline-block;
+      align-self: flex-start;
+      background: #2dd44c;
+      color: #000;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .panel-cta:hover { background: #26bf43; }
+    .panel-cta.secondary {
+      background: transparent;
+      border: 1.5px solid #ccc;
+      color: #1a1a1a;
+    }
+    .panel-cta.secondary:hover {
+      border-color: #999;
+      background: rgba(0,0,0,0.03);
+    }
+
+    .panel-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      min-height: 360px;
+    }
+    .panel-thumb {
+      background: #e0ddd6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09a8e;
+      font-size: 13px;
+      min-height: 175px;
+    }
+    /* Rounded corners on outer edges only */
+    .inspired-panel:not(.reverse) .panel-thumb:nth-child(2) { border-top-right-radius: 19px; }
+    .inspired-panel:not(.reverse) .panel-thumb:nth-child(4) { border-bottom-right-radius: 19px; }
+    .inspired-panel.reverse .panel-thumb:nth-child(1) { border-top-left-radius: 19px; }
+    .inspired-panel.reverse .panel-thumb:nth-child(3) { border-bottom-left-radius: 19px; }
+
+    /* Stats / social proof badge */
+    .panel-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #f0ede6;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .inspired { padding: 64px 24px; }
+      .inspired-header h2 { font-size: 34px; }
+      .inspired-panel {
+        grid-template-columns: 1fr;
+      }
+      .inspired-panel.reverse .panel-copy { order: 1; }
+      .inspired-panel.reverse .panel-gallery { order: 2; }
+      .panel-copy { padding: 36px 28px; }
+      .panel-copy h3 { font-size: 26px; }
+      .panel-gallery { min-height: 240px; }
+      .panel-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="inspired">
+    <div class="inspired-header">
+      <div class="eyebrow">Get inspired</div>
+      <h2>Get inspired</h2>
+    </div>
+
+    <!-- Panel 1: Ready-made -->
+    <div class="inspired-panel">
+      <div class="panel-copy">
+        <h3>Ready-made compounds</h3>
+        <p>Properties our clients have purchased over the past year.</p>
+        <a href="#" class="panel-cta">See what's available now</a>
+        <div class="panel-stats">
+          <div class="stat">
+            <span class="stat-num">24</span>
+            <span class="stat-label">Properties sold</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Markets</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-gallery">
+        <div class="panel-thumb">Photo</div>
+        <div class="panel-thumb">Photo</div>
+        <div class="panel-thumb">Photo</div>
+        <div class="panel-thumb">Photo</div>
+      </div>
+    </div>
+
+    <!-- Panel 2: Buy-to-build (reversed) -->
+    <div class="inspired-panel reverse">
+      <div class="panel-copy">
+        <h3>Buy-to-build properties</h3>
+        <p>Properties with the right bones for a compound conversion — ADU potential, multi-unit zoning, or room to expand.</p>
+        <a href="#" class="panel-cta secondary">Explore options</a>
+        <div class="panel-stats">
+          <div class="stat">
+            <span class="stat-num">40+</span>
+            <span class="stat-label">Listed properties</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">5</span>
+            <span class="stat-label">Zoning types</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-gallery">
+        <div class="panel-thumb">Photo</div>
+        <div class="panel-thumb">Photo</div>
+        <div class="panel-thumb">Photo</div>
+        <div class="panel-thumb">Photo</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

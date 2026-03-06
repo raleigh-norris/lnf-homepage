@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Section - Mockup A: Side-by-Side Cards</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .services {
+      padding: 96px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .services-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .services-header p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 56px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e8e5de;
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #f3f1eb;
+      color: #555;
+    }
+    .tag.highlight {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    .tag.effort-med {
+      background: #fff8e1;
+      color: #f57f17;
+    }
+    .tag.effort-high {
+      background: #fff3e0;
+      color: #e65100;
+    }
+    .tag.timeline {
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+
+    .card-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+      flex: 1;
+    }
+    .card-steps li {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #444;
+      padding-left: 28px;
+      position: relative;
+    }
+    .card-steps li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2dd44c;
+    }
+
+    .card-cta {
+      display: inline-block;
+      align-self: flex-start;
+      background: #2dd44c;
+      color: #000;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .card-cta:hover { background: #26bf43; }
+
+    .card-cta.secondary {
+      background: transparent;
+      border: 1.5px solid #ccc;
+      color: #1a1a1a;
+    }
+    .card-cta.secondary:hover {
+      border-color: #999;
+      background: rgba(0,0,0,0.03);
+    }
+
+    @media (max-width: 800px) {
+      .services { padding: 64px 24px; }
+      .services-header h2 { font-size: 34px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <section class="services">
+    <div class="services-header">
+      <h2>Buy or build your compound</h2>
+      <p>Live Near Friends' curated platform and expert services make it happen — whether you're buying move-in ready or building from scratch.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3 class="card-title">Buy your compound</h3>
+        <div class="tags">
+          <span class="tag highlight">Ideal for first-time buyers</span>
+          <span class="tag effort-med">Medium effort</span>
+        </div>
+        <ul class="card-steps">
+          <li>Explore move-in-ready properties on our curated platform</li>
+          <li>Work with the Live Near Friends network to purchase and finance a compound</li>
+          <li>End-to-end assistance</li>
+        </ul>
+        <a href="#" class="card-cta">See what's in your city</a>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Build your compound</h3>
+        <div class="tags">
+          <span class="tag highlight">Ideal for committed compound builders</span>
+          <span class="tag effort-high">High effort</span>
+          <span class="tag timeline">Now booking for 2027</span>
+        </div>
+        <ul class="card-steps">
+          <li>Find and buy a home perfect for multi-player expansion</li>
+          <li>Work with the Live Near Friends network on financing, rezoning, and designing your property</li>
+          <li>End-to-end assistance</li>
+        </ul>
+        <a href="#" class="card-cta secondary">Get inspired</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotes & Stats — Mockup A: Floating Stickers</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    :root {
+      --color-bg: #faf8f2;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-green: #2dd44c;
+      --color-border: #e0ddd6;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Demo section placeholders */
+    .demo-section {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .demo-section h2 {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      color: #ccc;
+    }
+    .demo-section.dark {
+      background: var(--color-text);
+      max-width: none;
+    }
+    .demo-section.dark h2 { color: #444; }
+    .demo-section.teal {
+      background: #c6f0f0;
+      max-width: none;
+    }
+    .demo-section.teal h2 { color: #8ac; }
+
+    /* ==============================
+       STICKER SYSTEM
+       ============================== */
+
+    /* Sticker strip — sits between sections */
+    .sticker-strip {
+      position: relative;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      overflow: visible;
+    }
+
+    /* Individual sticker */
+    .sticker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+    .sticker:hover {
+      transform: scale(1.05);
+    }
+
+    /* Sticker variants */
+    .sticker.green {
+      background: var(--color-green);
+      color: #000;
+    }
+    .sticker.dark {
+      background: var(--color-text);
+      color: #fff;
+    }
+    .sticker.cream {
+      background: #fff;
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+    }
+    .sticker.teal {
+      background: #0e686e;
+      color: #fff;
+    }
+
+    /* Rotation for playful feel */
+    .sticker:nth-child(odd) { transform: rotate(-2deg); }
+    .sticker:nth-child(even) { transform: rotate(1.5deg); }
+    .sticker:nth-child(3n) { transform: rotate(-1deg); }
+    .sticker:hover {
+      transform: rotate(0deg) scale(1.05) !important;
+    }
+
+    /* Stat number inside sticker */
+    .sticker-stat {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .sticker.green .sticker-stat { color: #000; }
+    .sticker.dark .sticker-stat { color: var(--color-green); }
+    .sticker.cream .sticker-stat { color: var(--color-text); }
+
+    /* ---- Quote sticker (larger, for testimonials) ---- */
+    .sticker-quote {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px 28px;
+      border-radius: 20px;
+      max-width: 320px;
+      white-space: normal;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: transform 0.2s ease;
+    }
+    .sticker-quote:hover { transform: rotate(0deg) scale(1.03) !important; }
+
+    .sticker-quote.light {
+      background: #fff;
+      border: 1.5px solid var(--color-border);
+    }
+    .sticker-quote.accent {
+      background: var(--color-green);
+    }
+    .sticker-quote.dark-bg {
+      background: var(--color-text);
+    }
+
+    .sticker-quote p {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.45;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .sticker-quote.light p { color: var(--color-text); }
+    .sticker-quote.accent p { color: #000; }
+    .sticker-quote.dark-bg p { color: rgba(255,255,255,0.88); }
+
+    .sticker-quote cite {
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .sticker-quote.light cite { color: #999; }
+    .sticker-quote.accent cite { color: rgba(0,0,0,0.5); }
+    .sticker-quote.dark-bg cite { color: rgba(255,255,255,0.4); }
+
+    /* ---- Scattered layout variant ---- */
+    .sticker-scatter {
+      position: relative;
+      padding: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      min-height: 200px;
+    }
+    .sticker-scatter .sticker:nth-child(1) { transform: rotate(-3deg) translateY(-8px); }
+    .sticker-scatter .sticker:nth-child(2) { transform: rotate(2deg) translateY(12px); }
+    .sticker-scatter .sticker:nth-child(3) { transform: rotate(-1.5deg) translateY(-4px); }
+    .sticker-scatter .sticker-quote:nth-child(4) { transform: rotate(1deg) translateY(6px); }
+
+    /* ---- Inline sticker (sits inside a section) ---- */
+    .sticker-inline {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    @media (max-width: 900px) {
+      .sticker-strip, .sticker-scatter { padding: 20px 24px; gap: 16px; }
+      .sticker { font-size: 13px; padding: 12px 18px; }
+      .sticker-stat { font-size: 20px; }
+      .sticker-quote { max-width: 280px; padding: 16px 20px; }
+      .sticker-quote p { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ EXAMPLE 1: Stat sticker strip between hero and press ============ -->
+  <div class="demo-section">
+    <h2>[ Hero Section ]</h2>
+  </div>
+
+  <div class="sticker-strip">
+    <div class="sticker green">
+      <span class="sticker-stat">200+</span>
+      <span>compounds created</span>
+    </div>
+    <div class="sticker dark">
+      <span class="sticker-stat">12</span>
+      <span>cities served</span>
+    </div>
+    <div class="sticker cream">
+      <span class="sticker-stat">98%</span>
+      <span>client satisfaction</span>
+    </div>
+  </div>
+
+  <div class="demo-section teal">
+    <h2>[ Press Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 2: Scattered stickers with a quote between sections ============ -->
+
+  <div class="sticker-scatter">
+    <div class="sticker green">
+      <span>🏡 Average build time: 8 months</span>
+    </div>
+    <div class="sticker dark">
+      <span class="sticker-stat">3.2x</span>
+      <span>faster than going solo</span>
+    </div>
+    <div class="sticker teal">
+      <span>Bay Area · LA · Seattle</span>
+    </div>
+    <div class="sticker-quote light" style="transform: rotate(1deg) translateY(6px);">
+      <p>&ldquo;We went from a dream to moving in next door to our best friends in under a year.&rdquo;</p>
+      <cite>— Sarah &amp; Mike, Oakland CA</cite>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ What We Do Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 3: Quote stickers between What We Do and Team ============ -->
+
+  <div class="sticker-strip" style="gap: 24px;">
+    <div class="sticker-quote accent" style="transform: rotate(-1.5deg);">
+      <p>&ldquo;They handled everything — the legal stuff, the zoning, even mediating our group&rsquo;s disagreements.&rdquo;</p>
+      <cite>— Priya K., Los Angeles</cite>
+    </div>
+    <div class="sticker-quote dark-bg" style="transform: rotate(1deg);">
+      <p>&ldquo;I didn&rsquo;t know this was possible until I found Live Near Friends. Now I can&rsquo;t imagine life any other way.&rdquo;</p>
+      <cite>— David R., Seattle</cite>
+    </div>
+    <div class="sticker-quote light" style="transform: rotate(-0.5deg);">
+      <p>&ldquo;Our kids play together every day. We share dinners three times a week. It&rsquo;s the village we always wanted.&rdquo;</p>
+      <cite>— Jen &amp; Marco, Bay Area</cite>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ Team Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 4: Inline stat stickers within a section ============ -->
+
+  <div class="demo-section" style="padding-bottom: 40px;">
+    <h2 style="margin-bottom: 0;">[ Discover What's Possible Section ]</h2>
+    <div class="sticker-inline">
+      <div class="sticker green">
+        <span class="sticker-stat">$2.4M</span>
+        <span>avg compound value</span>
+      </div>
+      <div class="sticker cream">
+        <span class="sticker-stat">4–8</span>
+        <span>families per compound</span>
+      </div>
+      <div class="sticker dark">
+        <span class="sticker-stat">87%</span>
+        <span>say it improved their quality of life</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ FAQ Section ]</h2>
+  </div>
+
+</body>
+</html>

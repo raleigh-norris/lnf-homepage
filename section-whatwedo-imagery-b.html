@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What We Do — Imagery Mockup B: Side-by-Side Photo Comparison Cards</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    :root {
+      --color-bg: #faf8f2;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-text-muted: #777;
+      --color-green: #2dd44c;
+      --color-border: #e0ddd6;
+      --color-card-bg: #fff;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius-md: 14px;
+      --radius-lg: 16px;
+      --transition: 0.15s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .whatwedo {
+      padding: 96px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .whatwedo > h2 {
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .whatwedo > p.subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin-bottom: 56px;
+    }
+
+    /* Column labels */
+    .column-labels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 16px;
+      padding: 0 4px;
+    }
+    .col-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .col-label.ours { color: var(--color-green); }
+    .col-label.theirs { color: #bbb; }
+
+    /* Step rows */
+    .step-row {
+      margin-bottom: 32px;
+    }
+    .step-row-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 400;
+      color: #ddd;
+      line-height: 1;
+    }
+    .step-name {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    /* Two-card comparison */
+    .card-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .compare-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .compare-card.ours {
+      background: var(--color-text);
+      color: #fff;
+    }
+    .compare-card.theirs {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Card photo */
+    .card-photo {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ours .card-photo {
+      background: linear-gradient(135deg, #2a3a2a 0%, #1a2a1a 100%);
+      color: rgba(255,255,255,0.35);
+    }
+    .theirs .card-photo {
+      background: linear-gradient(135deg, #e8e5de 0%, #d8d5ce 100%);
+      color: #aaa;
+    }
+    .card-photo-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-photo-inner svg {
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+    }
+    .card-photo-caption {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 24px;
+    }
+    .card-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .ours .card-label { color: var(--color-green); }
+    .theirs .card-label { color: #bbb; }
+    .card-body p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .ours .card-body p { color: rgba(255,255,255,0.88); }
+    .theirs .card-body p { color: #888; }
+
+    /* Divider "vs" */
+    .card-pair {
+      position: relative;
+    }
+    .vs-badge {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: var(--color-bg);
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #999;
+      z-index: 2;
+    }
+
+    /* ---- Relationship callout ---- */
+    .relationship-callout {
+      background: var(--color-text);
+      border-radius: 20px;
+      padding: 48px 52px;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .relationship-copy h3 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .relationship-copy h3 em {
+      color: var(--color-green);
+      font-style: normal;
+    }
+    .relationship-copy p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 13px 18px;
+    }
+    .check-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--color-green);
+    }
+    .check-item span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    @media (max-width: 900px) {
+      .whatwedo { padding: 64px 24px; }
+      .whatwedo > h2 { font-size: 34px; }
+      .card-pair { grid-template-columns: 1fr; gap: 16px; }
+      .vs-badge { display: none; }
+      .column-labels { display: none; }
+      .card-photo { height: 140px; }
+      .relationship-callout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px 24px;
+        margin-top: 36px;
+      }
+      .relationship-copy h3 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="whatwedo">
+    <h2>What we do</h2>
+    <p class="subtitle">See how working with us compares to going it alone.</p>
+
+    <!-- Step 1 -->
+    <div class="step-row">
+      <div class="step-row-header">
+        <span class="step-num">1</span>
+        <span class="step-name">Find your property</span>
+      </div>
+      <div class="card-pair">
+        <div class="vs-badge">vs</div>
+        <div class="compare-card ours">
+          <div class="card-photo">
+            <div class="card-photo-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/></svg>
+              <span class="card-photo-caption">Agent showing compound property</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">Live Near Friends</div>
+            <p>Curate properties that work for multiplayer housing</p>
+          </div>
+        </div>
+        <div class="compare-card theirs">
+          <div class="card-photo">
+            <div class="card-photo-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span class="card-photo-caption">Person scrolling Zillow alone</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">The traditional way</div>
+            <p>Search Zillow for hours to find a few okay options</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-row">
+      <div class="step-row-header">
+        <span class="step-num">2</span>
+        <span class="step-name">Buy your property</span>
+      </div>
+      <div class="card-pair">
+        <div class="vs-badge">vs</div>
+        <div class="compare-card ours">
+          <div class="card-photo">
+            <div class="card-photo-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="card-photo-caption">Friends signing together, smiling</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">Live Near Friends</div>
+            <p>Partner with a real estate agent experienced in financing and agreements for co-buy groups</p>
+          </div>
+        </div>
+        <div class="compare-card theirs">
+          <div class="card-photo">
+            <div class="card-photo-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="card-photo-caption">Confused realtor in a suit</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">The traditional way</div>
+            <p>Traditional realtor: &ldquo;You want to do what?&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-row">
+      <div class="step-row-header">
+        <span class="step-num">3</span>
+        <span class="step-name">Build or renovate</span>
+      </div>
+      <div class="card-pair">
+        <div class="vs-badge">vs</div>
+        <div class="compare-card ours">
+          <div class="card-photo">
+            <div class="card-photo-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              <span class="card-photo-caption">Team on-site at compound build</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">Live Near Friends</div>
+            <p>Expertise in zoning, finances, and compound design. End-to-end from purchase to move-in day.</p>
+          </div>
+        </div>
+        <div class="compare-card theirs">
+          <div class="card-photo">
+            <div class="card-photo-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span class="card-photo-caption">Pile of confusing paperwork</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">The traditional way</div>
+            <p>Months of back-and-forth with no compound-specific expertise</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Relationship callout -->
+    <div class="relationship-callout">
+      <div class="relationship-copy">
+        <h3>We design the relationship, <em>not just the buildings.</em></h3>
+        <p>What happens when one family wants to sell in 5&nbsp;years? How do you split shared spaces? Who decides on renovations? We plan for all of this on day&nbsp;one &mdash; so your compound is built on solid ground, socially and legally.</p>
+      </div>
+      <div class="checklist">
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Ownership structure templates (TIC / subdivision)</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Exit provisions &amp; buyout frameworks</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Decision rules for shared spaces</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Conflict resolution frameworks</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Uneven capital contribution modeling</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Facilitated alignment sessions</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Legal partners specializing in co-ownership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

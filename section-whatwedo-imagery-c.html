@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What We Do — Imagery Mockup C: Alternating Image/Text Rows</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    :root {
+      --color-bg: #faf8f2;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-text-muted: #777;
+      --color-green: #2dd44c;
+      --color-border: #e0ddd6;
+      --color-card-bg: #fff;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius-md: 14px;
+      --radius-lg: 16px;
+      --transition: 0.15s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .whatwedo {
+      padding: 96px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .whatwedo > h2 {
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    /* ---- Step block: split image + comparison ---- */
+    .step-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .step-block:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .step-block.reversed {
+      direction: rtl;
+    }
+    .step-block.reversed > * {
+      direction: ltr;
+    }
+
+    /* Photo side — split image showing both worlds */
+    .step-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 320px;
+    }
+    .photo-half {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px;
+    }
+    .photo-half.warm {
+      background: linear-gradient(160deg, #2a3a2a 0%, #1a2a1a 100%);
+      color: rgba(255,255,255,0.4);
+    }
+    .photo-half.cold {
+      background: linear-gradient(160deg, #e8e5de 0%, #d5d2cb 100%);
+      color: #aaa;
+    }
+    .photo-half svg {
+      width: 44px;
+      height: 44px;
+      opacity: 0.55;
+    }
+    .photo-half-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .photo-half.warm .photo-half-label { color: var(--color-green); opacity: 0.7; }
+    .photo-half.cold .photo-half-label { color: #aaa; }
+
+    /* Center divider line */
+    .photo-split::after {
+      content: 'vs';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      background: var(--color-bg);
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: #999;
+      z-index: 2;
+    }
+
+    /* Text side */
+    .step-content {
+      padding: 8px 0;
+    }
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 400;
+      color: #eee;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .step-name {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    /* Comparison mini-cards */
+    .mini-compare {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mini-card {
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .mini-card.ours {
+      background: var(--color-text);
+      color: #fff;
+    }
+    .mini-card.theirs {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+    }
+    .mini-card-icon {
+      flex-shrink: 0;
+      font-size: 16px;
+      margin-top: 2px;
+    }
+    .mini-card.ours .mini-card-icon { color: var(--color-green); }
+    .mini-card.theirs .mini-card-icon { color: #d44; font-weight: 700; }
+    .mini-card-text {
+      flex: 1;
+    }
+    .mini-card-label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .mini-card.ours .mini-card-label { color: var(--color-green); }
+    .mini-card.theirs .mini-card-label { color: #bbb; }
+    .mini-card p {
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .mini-card.ours p { color: rgba(255,255,255,0.88); }
+    .mini-card.theirs p { color: #888; }
+
+    /* ---- Relationship callout ---- */
+    .relationship-callout {
+      background: var(--color-text);
+      border-radius: 20px;
+      padding: 48px 52px;
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .relationship-copy h3 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .relationship-copy h3 em {
+      color: var(--color-green);
+      font-style: normal;
+    }
+    .relationship-copy p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 13px 18px;
+    }
+    .check-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--color-green);
+    }
+    .check-item span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    @media (max-width: 900px) {
+      .whatwedo { padding: 64px 24px; }
+      .whatwedo > h2 { font-size: 34px; margin-bottom: 40px; }
+      .step-block {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 48px;
+        padding-bottom: 48px;
+      }
+      .step-block.reversed { direction: ltr; }
+      .photo-split { height: 220px; }
+      .step-name { font-size: 24px; margin-bottom: 20px; }
+      .relationship-callout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px 24px;
+        margin-top: 48px;
+      }
+      .relationship-copy h3 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="whatwedo">
+    <h2>What we do</h2>
+
+    <!-- Step 1: Image left, text right -->
+    <div class="step-block">
+      <div class="step-photo">
+        <div class="photo-split">
+          <div class="photo-half warm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/></svg>
+            <span class="photo-half-label">LNF agent touring<br>a compound property</span>
+          </div>
+          <div class="photo-half cold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span class="photo-half-label">Person scrolling<br>Zillow at midnight</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-num">1</div>
+        <div class="step-name">Find your property</div>
+        <div class="mini-compare">
+          <div class="mini-card ours">
+            <span class="mini-card-icon">&#10003;</span>
+            <div class="mini-card-text">
+              <div class="mini-card-label">Live Near Friends</div>
+              <p>Curate properties that work for multiplayer housing</p>
+            </div>
+          </div>
+          <div class="mini-card theirs">
+            <span class="mini-card-icon">&#10005;</span>
+            <div class="mini-card-text">
+              <div class="mini-card-label">The traditional way</div>
+              <p>Search Zillow for hours to find a few okay options</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Image right, text left -->
+    <div class="step-block reversed">
+      <div class="step-photo">
+        <div class="photo-split">
+          <div class="photo-half warm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span class="photo-half-label">Friends signing<br>papers together</span>
+          </div>
+          <div class="photo-half cold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="photo-half-label">Confused realtor<br>in a suit</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-num">2</div>
+        <div class="step-name">Buy your property</div>
+        <div class="mini-compare">
+          <div class="mini-card ours">
+            <span class="mini-card-icon">&#10003;</span>
+            <div class="mini-card-text">
+              <div class="mini-card-label">Live Near Friends</div>
+              <p>Partner with a real estate agent experienced in financing and agreements for co-buy groups</p>
+            </div>
+          </div>
+          <div class="mini-card theirs">
+            <span class="mini-card-icon">&#10005;</span>
+            <div class="mini-card-text">
+              <div class="mini-card-label">The traditional way</div>
+              <p>Traditional realtor: &ldquo;You want to do what?&rdquo;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Image left, text right -->
+    <div class="step-block">
+      <div class="step-photo">
+        <div class="photo-split">
+          <div class="photo-half warm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span class="photo-half-label">Team on-site<br>at a compound build</span>
+          </div>
+          <div class="photo-half cold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span class="photo-half-label">Pile of confusing<br>paperwork &amp; invoices</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-num">3</div>
+        <div class="step-name">Build or renovate</div>
+        <div class="mini-compare">
+          <div class="mini-card ours">
+            <span class="mini-card-icon">&#10003;</span>
+            <div class="mini-card-text">
+              <div class="mini-card-label">Live Near Friends</div>
+              <p>Expertise in zoning, finances, and compound design. End-to-end from purchase to move-in day.</p>
+            </div>
+          </div>
+          <div class="mini-card theirs">
+            <span class="mini-card-icon">&#10005;</span>
+            <div class="mini-card-text">
+              <div class="mini-card-label">The traditional way</div>
+              <p>Months of back-and-forth with no compound-specific expertise</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Relationship callout -->
+    <div class="relationship-callout">
+      <div class="relationship-copy">
+        <h3>We design the relationship, <em>not just the buildings.</em></h3>
+        <p>What happens when one family wants to sell in 5&nbsp;years? How do you split shared spaces? Who decides on renovations? We plan for all of this on day&nbsp;one &mdash; so your compound is built on solid ground, socially and legally.</p>
+      </div>
+      <div class="checklist">
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Ownership structure templates (TIC / subdivision)</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Exit provisions &amp; buyout frameworks</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Decision rules for shared spaces</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Conflict resolution frameworks</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Uneven capital contribution modeling</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Facilitated alignment sessions</span>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Legal partners specializing in co-ownership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

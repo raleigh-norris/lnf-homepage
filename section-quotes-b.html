@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotes & Stats — Mockup B: Divider Bars</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    :root {
+      --color-bg: #faf8f2;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-green: #2dd44c;
+      --color-border: #e0ddd6;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Demo section placeholders */
+    .demo-section {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .demo-section h2 {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      color: #ccc;
+    }
+    .demo-section.teal { background: #c6f0f0; max-width: none; }
+    .demo-section.teal h2 { color: #8ac; }
+
+    /* ==============================
+       DIVIDER BAR SYSTEM
+       ============================== */
+
+    /* --- Type 1: Stat counter bar --- */
+    .stat-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .stat-bar-item {
+      flex: 1;
+      max-width: 320px;
+      padding: 40px 32px;
+      text-align: center;
+      border-right: 1px solid var(--color-border);
+    }
+    .stat-bar-item:last-child { border-right: none; }
+    .stat-bar-num {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--color-text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-bar-label {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    /* Dark variant */
+    .stat-bar.dark {
+      background: var(--color-text);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .stat-bar.dark .stat-bar-item { border-color: rgba(255,255,255,0.08); }
+    .stat-bar.dark .stat-bar-num { color: var(--color-green); }
+    .stat-bar.dark .stat-bar-label { color: rgba(255,255,255,0.55); }
+
+    /* --- Type 2: Quote banner --- */
+    .quote-bar {
+      padding: 56px 48px;
+      text-align: center;
+    }
+    .quote-bar.green-bg {
+      background: var(--color-green);
+    }
+    .quote-bar.dark-bg {
+      background: var(--color-text);
+    }
+    .quote-bar.cream-bg {
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .quote-bar blockquote {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.35;
+      font-style: italic;
+      max-width: 740px;
+      margin: 0 auto 16px;
+    }
+    .quote-bar.green-bg blockquote { color: #000; }
+    .quote-bar.dark-bg blockquote { color: #fff; }
+    .quote-bar.cream-bg blockquote { color: var(--color-text); }
+
+    .quote-bar cite {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .quote-bar.green-bg cite { color: rgba(0,0,0,0.45); }
+    .quote-bar.dark-bg cite { color: rgba(255,255,255,0.4); }
+    .quote-bar.cream-bg cite { color: #999; }
+
+    /* --- Type 3: Scrolling ticker --- */
+    .ticker-bar {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 16px 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .ticker-bar.dark {
+      background: var(--color-text);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 40px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .ticker-bar:not(.dark) .ticker-item { color: var(--color-text-secondary); }
+    .ticker-bar.dark .ticker-item { color: rgba(255,255,255,0.5); }
+    .ticker-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-green);
+      flex-shrink: 0;
+    }
+    .ticker-item .ticker-stat {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .ticker-bar:not(.dark) .ticker-stat { color: var(--color-text); }
+    .ticker-bar.dark .ticker-stat { color: var(--color-green); }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* --- Type 4: Stat + quote combo --- */
+    .combo-bar {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .combo-stat {
+      padding: 48px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-green);
+    }
+    .combo-stat-num {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 700;
+      color: #000;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .combo-stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.5);
+    }
+    .combo-quote {
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .combo-quote blockquote {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.4;
+      font-style: italic;
+      color: var(--color-text);
+      margin-bottom: 12px;
+    }
+    .combo-quote cite {
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+    }
+
+    @media (max-width: 900px) {
+      .stat-bar { flex-direction: column; }
+      .stat-bar-item {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        padding: 28px 24px;
+      }
+      .stat-bar.dark .stat-bar-item { border-color: rgba(255,255,255,0.08); }
+      .stat-bar-item:last-child { border-bottom: none; }
+      .stat-bar-num { font-size: 36px; }
+      .quote-bar { padding: 40px 24px; }
+      .quote-bar blockquote { font-size: 22px; }
+      .combo-bar { grid-template-columns: 1fr; }
+      .combo-stat { padding: 32px 24px; }
+      .combo-quote { padding: 32px 24px; }
+      .combo-quote blockquote { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ EXAMPLE 1: Stat counter bar after hero ============ -->
+  <div class="demo-section">
+    <h2>[ Hero Section ]</h2>
+  </div>
+
+  <div class="stat-bar">
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">200+</div>
+      <div class="stat-bar-label">Compounds created</div>
+    </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">12</div>
+      <div class="stat-bar-label">Cities served</div>
+    </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">98%</div>
+      <div class="stat-bar-label">Client satisfaction</div>
+    </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">8mo</div>
+      <div class="stat-bar-label">Average build time</div>
+    </div>
+  </div>
+
+  <div class="demo-section teal">
+    <h2>[ Press Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 2: Quote banner between press and services ============ -->
+
+  <div class="quote-bar green-bg">
+    <blockquote>&ldquo;We went from a dream to moving in next door to our best friends in under a year.&rdquo;</blockquote>
+    <cite>— Sarah &amp; Mike, Oakland CA</cite>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ Services Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 3: Dark stat bar between services and what-we-do ============ -->
+
+  <div class="stat-bar dark">
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">3.2x</div>
+      <div class="stat-bar-label">Faster than going solo</div>
+    </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">$2.4M</div>
+      <div class="stat-bar-label">Average compound value</div>
+    </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">4–8</div>
+      <div class="stat-bar-label">Families per compound</div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ What We Do Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 4: Scrolling ticker between sections ============ -->
+
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">200+</span> compounds created</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">98%</span> client satisfaction</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Bay Area · LA · Seattle · Austin</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">8mo</span> average build time</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> &ldquo;The village we always wanted.&rdquo;</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">87%</span> say it improved quality of life</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">200+</span> compounds created</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">98%</span> client satisfaction</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Bay Area · LA · Seattle · Austin</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">8mo</span> average build time</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> &ldquo;The village we always wanted.&rdquo;</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> <span class="ticker-stat">87%</span> say it improved quality of life</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ Team Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 5: Stat + quote combo bar ============ -->
+
+  <div class="combo-bar">
+    <div class="combo-stat">
+      <div class="combo-stat-num">87%</div>
+      <div class="combo-stat-label">say it improved their quality of life</div>
+    </div>
+    <div class="combo-quote">
+      <blockquote>&ldquo;Our kids play together every day. We share dinners three times a week. It&rsquo;s the village we always wanted.&rdquo;</blockquote>
+      <cite>— Jen &amp; Marco, Bay Area</cite>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>[ FAQ Section ]</h2>
+  </div>
+
+  <!-- ============ EXAMPLE 6: Dark quote banner at bottom ============ -->
+
+  <div class="quote-bar dark-bg">
+    <blockquote>&ldquo;I didn&rsquo;t know this was possible until I found Live Near Friends. Now I can&rsquo;t imagine life any other way.&rdquo;</blockquote>
+    <cite>— David R., Seattle</cite>
+  </div>
+
+</body>
+</html>

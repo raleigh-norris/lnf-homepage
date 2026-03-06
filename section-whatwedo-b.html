@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What We Do - Mockup B: Stacked Cards with VS</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .whatwedo {
+      padding: 96px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .whatwedo h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 200px 1fr 48px 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    /* Step label */
+    .step-label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 32px;
+    }
+    .step-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: #e0ddd6;
+      line-height: 1;
+    }
+    .step-name {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* Cards */
+    .approach-card {
+      border-radius: 14px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .approach-card.ours {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .approach-card.theirs {
+      background: #fff;
+      border: 1px solid #e8e5de;
+    }
+
+    .approach-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .approach-card.ours .approach-tag { color: #2dd44c; }
+    .approach-card.theirs .approach-tag { color: #bbb; }
+
+    .approach-card p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .approach-card.ours p { color: rgba(255,255,255,0.88); }
+    .approach-card.theirs p { color: #888; }
+
+    /* VS badge */
+    .vs-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vs-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #faf8f2;
+      border: 2px solid #e0ddd6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #aaa;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 900px) {
+      .whatwedo { padding: 64px 24px; }
+      .whatwedo h2 { font-size: 34px; margin-bottom: 40px; }
+      .step {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .step-label {
+        padding-right: 0;
+        padding-bottom: 8px;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .step-num { font-size: 32px; }
+      .vs-col { padding: 4px 0; }
+    }
+  </style>
+</head>
+<body>
+  <section class="whatwedo">
+    <h2>What we do</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-label">
+          <span class="step-num">1</span>
+          <span class="step-name">Find your property</span>
+        </div>
+        <div class="approach-card ours">
+          <span class="approach-tag">Live Near Friends</span>
+          <p>Curate properties that work for multiplayer housing</p>
+        </div>
+        <div class="vs-col"><div class="vs-badge">VS</div></div>
+        <div class="approach-card theirs">
+          <span class="approach-tag">Zillow</span>
+          <p>Search for hours to find a few okay options</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-label">
+          <span class="step-num">2</span>
+          <span class="step-name">Buy your property</span>
+        </div>
+        <div class="approach-card ours">
+          <span class="approach-tag">Live Near Friends</span>
+          <p>Partner with a real estate agent with experience in financing, purchasing, and creating agreements for co-buy groups</p>
+        </div>
+        <div class="vs-col"><div class="vs-badge">VS</div></div>
+        <div class="approach-card theirs">
+          <span class="approach-tag">Traditional realtor</span>
+          <p>"You want to do what?"</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-label">
+          <span class="step-num">3</span>
+          <span class="step-name">Build or renovate</span>
+        </div>
+        <div class="approach-card ours">
+          <span class="approach-tag">Live Near Friends</span>
+          <p>Expertise in zoning, finances, and compound design. End-to-end assistance from purchase to move-in day.</p>
+        </div>
+        <div class="vs-col"><div class="vs-badge">VS</div></div>
+        <div class="approach-card theirs">
+          <span class="approach-tag">Traditional firm</span>
+          <p>Months of back-and-forth with no compound-specific expertise</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

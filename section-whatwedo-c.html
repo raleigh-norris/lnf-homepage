@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What We Do - Mockup C: Expandable Rows</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #faf8f2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .whatwedo {
+      padding: 96px 48px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .whatwedo h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    /* Accordion rows */
+    .step-row {
+      border-bottom: 1px solid #e0ddd6;
+    }
+    .step-row:first-child {
+      border-top: 1px solid #e0ddd6;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .step-header:hover .step-title { color: #555; }
+
+    .step-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 40px;
+      font-weight: 400;
+      color: #ddd;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 48px;
+    }
+    .step-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 26px;
+      font-weight: 400;
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .step-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.25s, border-color 0.15s;
+      background: none;
+      cursor: pointer;
+    }
+    .step-toggle svg {
+      width: 14px;
+      height: 14px;
+      stroke: #999;
+      fill: none;
+      stroke-width: 2;
+    }
+    .step-row.open .step-toggle {
+      transform: rotate(180deg);
+      border-color: #999;
+    }
+
+    /* Expandable detail */
+    .step-detail {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 0 0 68px;
+    }
+    .step-row.open .step-detail {
+      max-height: 400px;
+      padding: 0 0 32px 68px;
+    }
+
+    .compare-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .compare-box {
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .compare-box.ours {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .compare-box.theirs {
+      background: #fff;
+      border: 1px solid #e8e5de;
+    }
+
+    .compare-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .compare-box.ours .compare-label { color: #2dd44c; }
+    .compare-box.theirs .compare-label { color: #bbb; }
+
+    .compare-box p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .compare-box.ours p { color: rgba(255,255,255,0.88); }
+    .compare-box.theirs p { color: #888; font-style: italic; }
+
+    @media (max-width: 800px) {
+      .whatwedo { padding: 64px 24px; }
+      .whatwedo h2 { font-size: 34px; margin-bottom: 40px; }
+      .step-detail { padding-left: 0; }
+      .step-row.open .step-detail { padding-left: 0; }
+      .compare-pair { grid-template-columns: 1fr; }
+      .step-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="whatwedo">
+    <h2>What we do</h2>
+
+    <div class="step-row open">
+      <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="step-num">1</span>
+        <span class="step-title">Find your property</span>
+        <button class="step-toggle" aria-label="Toggle details">
+          <svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg>
+        </button>
+      </div>
+      <div class="step-detail">
+        <div class="compare-pair">
+          <div class="compare-box ours">
+            <div class="compare-label">Live Near Friends</div>
+            <p>Curate properties that work for multiplayer housing</p>
+          </div>
+          <div class="compare-box theirs">
+            <div class="compare-label">Zillow</div>
+            <p>Search for hours to find a few okay options</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="step-num">2</span>
+        <span class="step-title">Buy your property</span>
+        <button class="step-toggle" aria-label="Toggle details">
+          <svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg>
+        </button>
+      </div>
+      <div class="step-detail">
+        <div class="compare-pair">
+          <div class="compare-box ours">
+            <div class="compare-label">Live Near Friends</div>
+            <p>Partner with a real estate agent with experience in financing, purchasing, and creating agreements for co-buy groups</p>
+          </div>
+          <div class="compare-box theirs">
+            <div class="compare-label">Traditional realtor</div>
+            <p>"You want to do what?"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="step-num">3</span>
+        <span class="step-title">Build or renovate</span>
+        <button class="step-toggle" aria-label="Toggle details">
+          <svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"></polyline></svg>
+        </button>
+      </div>
+      <div class="step-detail">
+        <div class="compare-pair">
+          <div class="compare-box ours">
+            <div class="compare-label">Live Near Friends</div>
+            <p>Expertise in zoning, finances, and compound design. End-to-end assistance from purchase to move-in day.</p>
+          </div>
+          <div class="compare-box theirs">
+            <div class="compare-label">Traditional firm</div>
+            <p>Months of back-and-forth with no compound-specific expertise</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
