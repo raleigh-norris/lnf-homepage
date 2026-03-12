@@ -595,198 +595,177 @@
       line-height: 1.4;
     }
 
-    /* ---- What We Do ---- */
-    .whatwedo {
+    /* ---- How It Works (Timeline) ---- */
+    .howitworks {
       padding: var(--section-pad);
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
-    .whatwedo > h2 {
+    .howitworks-header {
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 80px;
     }
-    .whatwedo-sub {
-      text-align: center;
-      font-family: var(--font-body);
-      font-size: var(--fs-600);
-      line-height: 1.3;
-      letter-spacing: -0.4px;
-      color: var(--color-text);
-      max-width: 600px;
-      margin: 0 auto 64px;
+    .howitworks-header h2 {
+      font-family: var(--font-display);
+      font-size: var(--fs-800);
+      font-weight: 400;
+      letter-spacing: -0.01em;
     }
-
-    /* Step block: photo on top, cards below aligned */
-    .step-block {
-      margin-bottom: 72px;
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .step-block:last-of-type {
-      margin-bottom: 0;
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-border);
+      transform: translateX(-50%);
     }
-
-    /* Photo side — split image showing both worlds */
-    .step-photo {
-      border-radius: 10px;
-      overflow: hidden;
+    .timeline-step {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 80px;
       position: relative;
     }
-    .photo-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 320px;
+    .timeline-step:last-child {
+      margin-bottom: 0;
     }
-    .photo-half {
+    .timeline-step:nth-child(odd) {
+      flex-direction: row;
+    }
+    .timeline-step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .timeline-image {
+      flex: 1;
+      min-width: 0;
+    }
+    .timeline-image img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+    .timeline-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .timeline-step::after {
+      content: attr(data-step);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-green);
+      color: #000;
+      font-family: var(--font-body-bold);
+      font-size: 18px;
+      font-weight: 800;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 24px;
+      z-index: 2;
+      border: 4px solid var(--color-bg);
     }
-    .photo-half.warm {
-      background: linear-gradient(160deg, #2a3a2a 0%, #1a2a1a 100%);
-      color: rgba(255,255,255,0.4);
+    .timeline-step-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
     }
-    .photo-half.cold {
-      background: linear-gradient(160deg, #e8e5de 0%, #d5d2cb 100%);
-      color: #aaa;
+    .timeline-step-desc {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
     }
-    .photo-half svg {
-      width: 44px;
-      height: 44px;
-      opacity: 0.55;
+    .timeline-step:nth-child(odd) .timeline-content {
+      text-align: left;
+      padding-right: 40px;
     }
-    .photo-half-label {
-      font-family: var(--font-body-bold);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-align: center;
-      line-height: 1.4;
+    .timeline-step:nth-child(odd) .timeline-image {
+      padding-left: 40px;
     }
-    .photo-half.warm .photo-half-label { color: var(--color-green); opacity: 0.7; }
-    .photo-half.cold .photo-half-label { color: #aaa; }
-    .photo-half.has-img {
-      padding: 0;
+    .timeline-step:nth-child(even) .timeline-content {
+      text-align: right;
+      padding-left: 40px;
     }
-    .photo-half.has-img img {
+    .timeline-step:nth-child(even) .timeline-image {
+      padding-right: 40px;
+    }
+
+    /* ---- CTA Split ---- */
+    .cta-split {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--section-pad);
+    }
+    .cta-split-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 420px;
+    }
+    .cta-split-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-split-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .photo-split::after {
-      content: 'vs';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 32px;
-      height: 32px;
-      background: var(--color-bg);
-      border: 2px solid var(--color-border);
-      border-radius: 50%;
+    .cta-split-content {
+      padding: 64px 56px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      font-size: 10px;
-      font-weight: 800;
-      color: #999;
-      z-index: 2;
     }
-
-    /* Step header */
-    .step-num {
-      font-family: var(--font-display);
-      font-size: 48px;
-      font-weight: 400;
-      color: #eee;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .step-name {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 20px;
-    }
-
-    /* Comparison mini-cards — side by side, aligned with photo halves */
-    .mini-compare {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .mini-card {
-      border-radius: 12px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .mini-card.ours {
-      background: var(--color-text);
-      color: #fff;
-    }
-    .mini-card.theirs {
-      background: var(--color-card-bg);
-      border: 1px solid var(--color-border);
-    }
-    .mini-card-icon {
-      flex-shrink: 0;
-      font-size: 16px;
-      margin-top: 2px;
-    }
-    .mini-card.ours .mini-card-icon { color: var(--color-green); }
-    .mini-card.theirs .mini-card-icon { color: #d44; font-weight: 700; }
-    .mini-card-text { flex: 1; }
-    .mini-card-label {
-      font-family: var(--font-body-bold);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
-    }
-    .mini-card.ours .mini-card-label { color: var(--color-green); }
-    .mini-card.theirs .mini-card-label { color: #bbb; }
-    .mini-card p {
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.3;
-    }
-    .mini-card.ours p { color: rgba(255,255,255,0.88); }
-    .mini-card.theirs p { color: #888; }
-
-    /* Relationship band (full-width dark break) */
-    .relationship-band {
-      background: #e1baff;
-      padding: 80px 48px;
-    }
-    .relationship-band-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .relationship-copy h3 {
+    .cta-split-content h2 {
       font-family: var(--font-display);
       font-size: var(--fs-800);
       font-weight: 400;
       color: var(--color-text);
-      line-height: 1;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
     }
-    .relationship-copy h3 em {
-      font-style: normal;
-    }
-    .relationship-text p {
+    .cta-split-content p {
       font-family: var(--font-body);
-      font-size: var(--fs-600);
-      line-height: 1.3;
-      letter-spacing: -0.4px;
+      font-size: 16px;
+      line-height: 1.65;
       color: var(--color-text-secondary);
+      margin-bottom: 36px;
+    }
+    .cta-split-content .btn {
+      align-self: flex-start;
+    }
+    .cta-trust {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .cta-trust svg {
+      flex-shrink: 0;
     }
 
 
@@ -1418,16 +1397,41 @@
         grid-template-columns: 1fr;
       }
       .home-photo { aspect-ratio: 4 / 3; }
-      .whatwedo > h2 { margin-bottom: 40px; }
-      .step-block {
+      .howitworks { padding: 64px 18px; }
+      .howitworks-header { margin-bottom: 48px; }
+      .howitworks-header h2 { font-size: 36px; }
+      .timeline::before { left: 24px; }
+      .timeline-step,
+      .timeline-step:nth-child(odd),
+      .timeline-step:nth-child(even) {
+        flex-direction: column;
+        gap: 24px;
         margin-bottom: 56px;
+        padding-left: 64px;
       }
-      .photo-split { height: 220px; }
-      .step-name { font-size: 24px; margin-bottom: 20px; }
-      .mini-compare { grid-template-columns: 1fr; }
-      .relationship-band { padding: 56px 18px; }
-      .relationship-band-inner { grid-template-columns: 1fr; gap: 20px; }
-      .relationship-copy h3 { font-size: 36px; }
+      .timeline-step::after {
+        left: 24px;
+        top: 0;
+        transform: translate(-50%, 0);
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+      .timeline-step:nth-child(odd) .timeline-content,
+      .timeline-step:nth-child(even) .timeline-content {
+        text-align: left;
+        padding: 0;
+      }
+      .timeline-step:nth-child(odd) .timeline-image,
+      .timeline-step:nth-child(even) .timeline-image {
+        padding: 0;
+      }
+      .timeline-image img { height: 220px; }
+      .cta-split { padding: 64px 18px; }
+      .cta-split-inner { grid-template-columns: 1fr; }
+      .cta-split-image { height: 260px; }
+      .cta-split-content { padding: 40px 28px 48px; }
+      .cta-split-content h2 { font-size: 30px; }
       .sticker-row { gap: 16px; margin-top: 48px; }
       .sticker-quote { max-width: none; min-width: 0; }
       .inspired { padding: 64px 0; }
@@ -1646,6 +1650,23 @@
       </div>
     </section>
 
+    <section class="cta-split" aria-label="Book a consultation">
+      <div class="cta-split-inner">
+        <div class="cta-split-image">
+          <img src="Images/LNF_TurntheFantasy_Oakland_2.jpeg" alt="Friends gathering at a compound">
+        </div>
+        <div class="cta-split-content">
+          <h2>Ready to get started?</h2>
+          <p>Hop on the phone with a Live Near Friends expert! We'll answer your questions, explore your options, and provide next steps.</p>
+          <a href="#" class="btn btn-primary">Book a free consultation</a>
+          <div class="cta-trust">
+            <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#999" stroke-width="1.5"/><path d="M5 8.5l2 2 4-4.5" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Free 15-minute call &middot; No commitment required
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="inspiration" aria-label="The inspiration behind Live Near Friends">
       <div class="inspiration-inner">
         <h2 class="section-heading">The inspiration: Radish in Oakland</h2>
@@ -1663,119 +1684,53 @@
       </div>
     </section>
 
-    <section class="whatwedo" aria-label="How it works">
-      <h2 class="section-heading">The Live Near Friends experience</h2>
-      <p class="whatwedo-sub">Anyone can buy or build a compound. But creating the home your friends and family will love requires experience and expertise. Here&rsquo;s how we help.</p>
+    <section class="howitworks" aria-label="How it works">
+      <div class="howitworks-header">
+        <h2>How it works</h2>
+      </div>
 
-      <!-- Step 1 -->
-      <div class="step-block">
-        <div class="step-num" aria-hidden="true">1</div>
-        <div class="step-name">Find your property</div>
-        <div class="step-photo">
-          <div class="photo-split">
-            <div class="photo-half warm has-img">
-              <img src="Images/LNF_BuyExperience.png" alt="LNF agent touring a compound property">
-            </div>
-            <div class="photo-half cold has-img">
-              <img src="Images/LNF_ExperienceZ.jpeg" alt="Person scrolling Zillow at midnight">
-            </div>
+      <div class="timeline">
+        <div class="timeline-step" data-step="1">
+          <div class="timeline-content">
+            <h3 class="timeline-step-title">Get inspired</h3>
+            <p class="timeline-step-desc">Explore a curated selection of move-in-ready compounds OR discover what's possible with our custom compound field guide.</p>
+          </div>
+          <div class="timeline-image">
+            <img src="Images/LNF_Inspire_1.png" alt="Browse curated compound listings">
           </div>
         </div>
-        <div class="mini-compare">
-          <div class="mini-card ours">
-            <span class="mini-card-icon" aria-hidden="true">&#10003;</span>
-            <div class="mini-card-text">
-              <div class="mini-card-label">Live Near Friends</div>
-              <p>Curate properties that work for multiplayer housing</p>
-            </div>
+
+        <div class="timeline-step" data-step="2">
+          <div class="timeline-content">
+            <h3 class="timeline-step-title">Book a 15-minute consultation</h3>
+            <p class="timeline-step-desc">Chat with a Live Near Friends expert. We'll explore options based on your budget, share tips for navigating conversations with friends and family, and connect you to a Live Near Friends agent.</p>
           </div>
-          <div class="mini-card theirs">
-            <span class="mini-card-icon" aria-hidden="true">&#10005;</span>
-            <div class="mini-card-text">
-              <div class="mini-card-label">The traditional way</div>
-              <p>Search Zillow for hours to find a few okay options</p>
-            </div>
+          <div class="timeline-image">
+            <img src="Images/LNF_HowItWorks_RealEstateAgent.png" alt="Consult with a Live Near Friends expert">
+          </div>
+        </div>
+
+        <div class="timeline-step" data-step="3">
+          <div class="timeline-content">
+            <h3 class="timeline-step-title">Find and buy your compound</h3>
+            <p class="timeline-step-desc">Explore properties on our all-in-one platform. Filter homes based on size, amenities, price, and location. When you find one you love, we help you with the details other agents can't, including group financing and co-ownership agreements.</p>
+          </div>
+          <div class="timeline-image">
+            <img src="Images/LNF_HowItWorks_FindProperties_3.jpeg" alt="Browse compound properties on the platform">
+          </div>
+        </div>
+
+        <div class="timeline-step" data-step="4">
+          <div class="timeline-content">
+            <h3 class="timeline-step-title">Make your home your own</h3>
+            <p class="timeline-step-desc">Renovate your property or create additional homes for friends and family. We provide end-to-end services—from navigating zoning laws to creating shared spaces you'll love spending time in.</p>
+          </div>
+          <div class="timeline-image">
+            <img src="Images/LNF_BuildYourCompound.jpg" alt="Renovate and customize your compound">
           </div>
         </div>
       </div>
-
-      <!-- Step 2 -->
-      <div class="step-block">
-        <div class="step-num" aria-hidden="true">2</div>
-        <div class="step-name">Buy your property</div>
-        <div class="step-photo">
-          <div class="photo-split">
-            <div class="photo-half warm has-img">
-              <img src="Images/LNF_HowItWorks_RealEstateAgent.png" alt="Friends signing papers together">
-            </div>
-            <div class="photo-half cold has-img">
-              <img src="Images/LNF_HowItWorks_RealEstateAgent_Other1.jpg" alt="Confused realtor in a suit">
-            </div>
-          </div>
-        </div>
-        <div class="mini-compare">
-          <div class="mini-card ours">
-            <span class="mini-card-icon" aria-hidden="true">&#10003;</span>
-            <div class="mini-card-text">
-              <div class="mini-card-label">Live Near Friends</div>
-              <p>Partner with a real estate agent experienced in financing and agreements for co-buy groups</p>
-            </div>
-          </div>
-          <div class="mini-card theirs">
-            <span class="mini-card-icon" aria-hidden="true">&#10005;</span>
-            <div class="mini-card-text">
-              <div class="mini-card-label">The traditional way</div>
-              <p>Traditional realtor: &ldquo;You want to do what?&rdquo;</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step-block">
-        <div class="step-num" aria-hidden="true">3</div>
-        <div class="step-name">Build or renovate</div>
-        <div class="step-photo">
-          <div class="photo-split">
-            <div class="photo-half warm has-img">
-              <img src="Images/LNF_HowItWorks_BluePrintOurWay.png" alt="Team on-site at a compound build">
-            </div>
-            <div class="photo-half cold has-img">
-              <img src="Images/LNF_HowItWorks_BluePrintTheirWay_1.png" alt="Pile of confusing paperwork and invoices">
-            </div>
-          </div>
-        </div>
-        <div class="mini-compare">
-          <div class="mini-card ours">
-            <span class="mini-card-icon" aria-hidden="true">&#10003;</span>
-            <div class="mini-card-text">
-              <div class="mini-card-label">Live Near Friends</div>
-              <p>Expertise in zoning, finances, and compound design. End-to-end from purchase to move-in day.</p>
-            </div>
-          </div>
-          <div class="mini-card theirs">
-            <span class="mini-card-icon" aria-hidden="true">&#10005;</span>
-            <div class="mini-card-text">
-              <div class="mini-card-label">The traditional way</div>
-              <p>Months of back-and-forth with no compound-specific expertise</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </section>
-
-    <!-- Relationship band (full-width dark break) -->
-    <div class="relationship-band">
-      <div class="relationship-band-inner">
-        <div class="relationship-copy">
-          <h3>We design the relationship, <em>not just the buildings.</em></h3>
-        </div>
-        <div class="relationship-text">
-          <p>What happens when one family wants to sell in 5&nbsp;years? How do you split shared spaces? Who decides on renovations? We plan for all of this on day&nbsp;one &mdash; so your compound is built on solid ground, socially and legally.</p>
-        </div>
-      </div>
-    </div>
 
     <div class="sticker-row">
       <div class="sticker-quote accent">
