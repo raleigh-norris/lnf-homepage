@@ -151,6 +151,11 @@
       border-color: #999;
       background: rgba(0,0,0,0.03);
     }
+    .btn-dark {
+      background: var(--color-text);
+      color: #fff;
+    }
+    .btn-dark:hover { background: #222; }
     .btn-lg {
       padding: 16px 32px;
     }
@@ -369,7 +374,10 @@
     }
     .services-header {
       margin-bottom: 56px;
-      max-width: 560px;
+      text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .services-header h2 {
       margin-bottom: 12px;
@@ -381,91 +389,84 @@
       line-height: 1.3;
       letter-spacing: -0.4px;
     }
-    .panel {
+    .paths-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-      padding: 48px 0;
+      gap: 32px;
     }
-    .panel.reversed .panel-visual { order: 2; }
-    .panel.reversed .panel-copy { order: 1; }
-    .panel-visual {
-      background: #e8e5de;
-      border-radius: 10px;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
+    .path-card {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #a09a8e;
-      font-size: 14px;
+      flex-direction: column;
     }
-    .panel-visual img {
+    .path-card-image {
+      background: #e8e5de;
+      border-radius: var(--radius-lg);
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .path-card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .panel-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .panel-label {
-      font-family: var(--font-body-medium);
-      font-size: var(--fs-500);
+    .path-label {
+      display: inline-block;
+      align-self: flex-start;
+      font-family: var(--font-body-bold);
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: -0.4px;
+      letter-spacing: 0.06em;
       color: var(--color-text);
+      background: #e1baff;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
     }
-    .panel-title {
+    .path-title {
       font-family: var(--font-display);
-      font-size: var(--fs-800);
+      font-size: clamp(28px, 3vw, 40px);
       font-weight: 400;
       line-height: 1;
+      margin-bottom: 16px;
     }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag {
-      font-family: var(--font-body-medium);
-      font-size: 14px;
-      padding: 4px 8px;
-      border-radius: var(--radius-sm);
-      background: #f3f1eb;
-      color: var(--color-text);
-    }
-    .tag.green { background: #e8f5e9; color: #2e7d32; }
-    .tag.amber { background: #fff8e1; color: #f57f17; }
-    .tag.orange { background: #fff3e0; color: #e65100; }
-    .tag.blue { background: #e3f2fd; color: #1565c0; }
-    .panel-steps {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .panel-steps li {
+    .path-desc {
       font-family: var(--font-body);
       font-size: var(--fs-400);
       line-height: 1.3;
-      color: var(--color-text);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      letter-spacing: -0.4px;
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
     }
-    .panel-steps .snum {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--color-text);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
+    .path-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--color-border);
+      margin-bottom: 28px;
+    }
+    .path-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .path-meta-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+    .path-meta-value {
+      font-family: var(--font-body-bold);
+      font-size: 14px;
+      color: var(--color-text);
+      text-align: right;
+    }
+    .path-card .btn {
+      width: 100%;
+      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -598,22 +599,16 @@
     /* ---- How It Works (Timeline) ---- */
     .howitworks {
       padding: var(--section-pad);
-      max-width: 1200px;
+      max-width: var(--max-w);
       margin: 0 auto;
     }
     .howitworks-header {
       text-align: center;
       margin-bottom: 80px;
     }
-    .howitworks-header h2 {
-      font-family: var(--font-display);
-      font-size: var(--fs-800);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-    }
     .timeline {
       position: relative;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
     }
     .timeline::before {
@@ -650,7 +645,7 @@
       width: 100%;
       height: 320px;
       object-fit: cover;
-      border-radius: var(--radius-lg);
+      border-radius: 10px;
       display: block;
     }
     .timeline-content {
@@ -679,15 +674,16 @@
     }
     .timeline-step-title {
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: clamp(24px, 2.5vw, 32px);
       font-weight: 400;
       margin-bottom: 12px;
-      letter-spacing: -0.01em;
+      line-height: 1;
     }
     .timeline-step-desc {
       font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: var(--fs-400);
+      line-height: 1.3;
+      letter-spacing: -0.4px;
       color: var(--color-text-secondary);
     }
     .timeline-step:nth-child(odd) .timeline-content {
@@ -707,7 +703,7 @@
 
     /* ---- CTA Split ---- */
     .cta-split {
-      max-width: 1200px;
+      max-width: var(--max-w);
       margin: 0 auto;
       padding: var(--section-pad);
     }
@@ -715,8 +711,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
       min-height: 420px;
     }
@@ -741,14 +736,14 @@
       font-size: var(--fs-800);
       font-weight: 400;
       color: var(--color-text);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
+      line-height: 1;
       margin-bottom: 16px;
     }
     .cta-split-content p {
       font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.65;
+      font-size: var(--fs-600);
+      line-height: 1.3;
+      letter-spacing: -0.4px;
       color: var(--color-text-secondary);
       margin-bottom: 36px;
     }
@@ -1418,19 +1413,14 @@
       .nav { padding: 16px 18px; }
       .nav-link { display: none; }
       .section-heading { font-size: 36px; }
-      .panel {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .panel.reversed .panel-visual { order: 0; }
-      .panel.reversed .panel-copy { order: 0; }
+      .paths-grid { grid-template-columns: 1fr; gap: 48px; }
+      .path-title { font-size: 32px; }
       .homes-grid {
         grid-template-columns: 1fr;
       }
       .home-photo { aspect-ratio: 4 / 3; }
       .howitworks { padding: 64px 18px; }
       .howitworks-header { margin-bottom: 48px; }
-      .howitworks-header h2 { font-size: 36px; }
       .timeline::before { left: 24px; }
       .timeline-step,
       .timeline-step:nth-child(odd),
@@ -1644,42 +1634,57 @@
 
     <section class="services" aria-label="Our services">
       <div class="services-header">
-        <h2 class="section-heading">Buy or build your compound</h2>
-        <p>Live Near Friends' curated platform and expert services make it happen — whether you're buying move-in ready or building from scratch.</p>
+        <h2 class="section-heading">Two paths to living near friends</h2>
+        <p>Pick the one that fits your timeline and ambition.</p>
       </div>
 
-      <div class="panel">
-        <div class="panel-visual"><img src="Images/LNF_ReadyMadeCompound.jpeg" alt="Ready-made compound property"></div>
-        <div class="panel-copy">
-          <h3 class="panel-title">Move-in ready compounds</h3>
-          <div class="tags">
-            <span class="tag green">Ideal for first-time buyers</span>
-            <span class="tag amber">Medium effort</span>
+      <div class="paths-grid">
+        <div class="path-card">
+          <div class="path-card-image">
+            <img src="Images/LNF_ReadyMadeCompound.jpeg" alt="Ready-made compound property">
           </div>
-          <ol class="panel-steps">
-            <li><span class="snum">1</span> Explore move-in-ready properties on our curated platform</li>
-            <li><span class="snum">2</span> Work with the Live Near Friends network to purchase and finance a compound</li>
-            <li><span class="snum">3</span> End-to-end assistance</li>
-          </ol>
+          <div class="path-label">Path 1</div>
+          <h3 class="path-title">Move-in ready compounds</h3>
+          <p class="path-desc">Explore curated properties on our platform, then work with the Live Near Friends network to purchase and finance your compound. We handle the details other agents can't.</p>
+          <div class="path-meta">
+            <div class="path-meta-row">
+              <span class="path-meta-label">Effort level</span>
+              <span class="path-meta-value">Medium</span>
+            </div>
+            <div class="path-meta-row">
+              <span class="path-meta-label">Best for</span>
+              <span class="path-meta-value">First-time buyers</span>
+            </div>
+            <div class="path-meta-row">
+              <span class="path-meta-label">Available in</span>
+              <span class="path-meta-value">Bay Area, LA, Seattle</span>
+            </div>
+          </div>
           <a href="#" class="btn btn-primary">See what's in your city</a>
         </div>
-      </div>
 
-      <div class="panel reversed">
-        <div class="panel-visual"><img src="Images/LNF_BuildYourCompound.jpg" alt="Compound build inspiration"></div>
-        <div class="panel-copy">
-          <h3 class="panel-title">Build a custom compound</h3>
-          <div class="tags">
-            <span class="tag green">Ideal for committed compound builders</span>
-            <span class="tag orange">High effort</span>
-            <span class="tag blue">Now booking for 2027</span>
+        <div class="path-card">
+          <div class="path-card-image">
+            <img src="Images/LNF_BuildYourCompound.jpg" alt="Custom compound build">
           </div>
-          <ol class="panel-steps">
-            <li><span class="snum">1</span> Find and buy a home perfect for multi-player expansion</li>
-            <li><span class="snum">2</span> Work with the Live Near Friends network on financing, rezoning, and designing your property</li>
-            <li><span class="snum">3</span> End-to-end assistance</li>
-          </ol>
-          <a href="#" class="btn btn-secondary">See what's possible</a>
+          <div class="path-label">Path 2</div>
+          <h3 class="path-title">Build a custom compound</h3>
+          <p class="path-desc">Find a home perfect for expansion, then work with our network on financing, rezoning, and designing your property. End-to-end assistance from purchase through build-out.</p>
+          <div class="path-meta">
+            <div class="path-meta-row">
+              <span class="path-meta-label">Effort level</span>
+              <span class="path-meta-value">High</span>
+            </div>
+            <div class="path-meta-row">
+              <span class="path-meta-label">Best for</span>
+              <span class="path-meta-value">Committed compound builders</span>
+            </div>
+            <div class="path-meta-row">
+              <span class="path-meta-label">Timeline</span>
+              <span class="path-meta-value">Now booking for 2027</span>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary">See what's possible</a>
         </div>
       </div>
     </section>
@@ -1720,7 +1725,7 @@
 
     <section class="howitworks" aria-label="How it works">
       <div class="howitworks-header">
-        <h2>How it works</h2>
+        <h2 class="section-heading">How it works</h2>
       </div>
 
       <div class="timeline">
